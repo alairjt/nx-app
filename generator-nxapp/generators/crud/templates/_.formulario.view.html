@@ -1,0 +1,34 @@
+<form name="<%= crudName.toLowerCase() %>Formulario" novalidate>
+  <div class="row">
+    <% ld.forEach(fields, function (field) { %>
+        <% if (ld.contains(field.telas, "formulario")) { %>
+            <div class="col-sm-6">
+              <nx-display-validation input="<%= crudName.toLowerCase() %>Formulario.<%= field.nome %>" label="<%= field.label %>"
+                                     obrigatorio="true">
+                <%= obterInputPorTipo(crudName, field) %>
+              </nx-display-validation>
+            </div>
+        <% } %>
+    <% }) %>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel">
+        <button id="btnLimpar<%= crudName.toLowerCase() %>" ng-disabled="mostrarBotaoLimpar" class="btn btn-default"
+                ng-click="cancelar();"><i class="glyphicon glyphicon-file"></i> <span class="hidden-xs">{{"Limpar"| translate}}</span>
+        </button>
+        <div class="pull-right">
+          <button id="btnCancelar<%=capitalize(crudName)%>" type="button" class="btn btn-default" data-toggle="modal"
+                  data-target="#dialogCancelamento"><i class="glyphicon glyphicon-remove"></i> <span class="hidden-xs">{{"Cancelar"| translate}}</span>
+          </button>
+          <button id="btnSalvar<%=capitalize(crudName)%>" class="btn btn-success" ng-click="salvar(<%= crudName.toLowerCase() %>Selecionado)"
+                  ng-disabled="<%= crudName.toLowerCase() %>Formulario.$invalid"><i class="glyphicon glyphicon-ok"></i>
+            <span class="hidden-xs">{{"Salvar"| translate}}</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

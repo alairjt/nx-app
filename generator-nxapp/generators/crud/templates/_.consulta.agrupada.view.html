@@ -1,0 +1,49 @@
+<div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <div class="row">                
+                <nx-filtro filtros="filtros" placeholder="{{'Busca rápida' | translate}}" 
+                           busca-avancada="{{buscaAvancada}}" 
+                           funcao-pesquisar-rapido="pesquisarRapido(filtros)" 
+                           funcao-pesquisar="pesquisarAvancado(filtros)" usuario="usuario@nexxera.com">
+                    <form id='formFiltro' name='formFiltro'>
+                    </form>
+                </nx-filtro> 
+            </div>
+            <div class="row" ng-show="filtered.length > 0">
+                <div class="col-lg-12">
+                    <table class="table table-responsive">
+                        <tr>
+                            <% ld.forEach(fields, function (field) { %>
+                                <% if (ld.contains(field.telas, "consulta")) { %>
+                                    <th class="text-center"><a href="" ng-click="ordenarCamposPor('<%=field.nome%>')">{{"<%=field.label%>"| translate}}</a></th>
+                                <% } %>
+                            <% }) %>
+                            <th class="text-center col-lg-1"></th>
+                        </tr>
+                        <tr title="{{<%=crudName.toLowerCase()%>.<%=campoGrupo%> | translate}}" ng-click="expandir(<%=crudName.toLowerCase()%>.<%=campoGrupo%>)"
+                            ng-repeat-start="<%=crudName.toLowerCase()%> in filtered | orderBy:campoOrderBy:reverse" 
+                            ng-style="styleGrupo(<%=crudName.toLowerCase()%>.<%=campoGrupo%>)">
+                            <td colspan="<%=(fields.length - 1)%>">{{<%=crudName.toLowerCase()%>.<%=campoGrupo%>}} ({{<%=crudName.toLowerCase()%>.<%=campoGrupoDetalhes%>.length}})</td>
+                            <td class="text-right">{{<%=crudName.toLowerCase()%>.<%=campoGrupoTotal%> | currency}}</td>
+                            <td class="text-center"><i ng-class="{ 'glyphicon glyphicon-chevron-up': expandido(<%=crudName.toLowerCase()%>.<%=campoGrupo%>), 'glyphicon glyphicon-chevron-down': !expandido(<%=crudName.toLowerCase()%>.<%=campoGrupo%>) }"></i></td>
+                        </tr>                        
+                        <tr style="background-color: #ffffff"
+                            ng-repeat-end ng-repeat="item in <%=crudName.toLowerCase()%>.<%=campoGrupoDetalhes%> | orderBy:campoOrderBy:reverse" ng-show="expandido(<%=crudName.toLowerCase()%>.<%=campoGrupo%>)">
+                            <% ld.forEach(fields, function (field) { %>
+                                <% if (ld.contains(field.telas, "consulta")) { %>
+                                    <td class="text-center">{{<%=getDisplayField("item", field)%>}}</td>
+                                <% } %>
+                            <% }) %>
+                            <td class="text-center col-lg-1"></td>
+                        </tr>
+                    </table>
+                    <div class="panel panel-result">
+                        <strong>{{"Total busca"| translate}} {{filtered.length}}</strong>
+                        <strong class="pull-right">{{valorTotal | currency}}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

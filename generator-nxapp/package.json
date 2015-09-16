@@ -1,15 +1,14 @@
 {
   "name": "generator-nxapp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Web App Hive Generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "alairjt/nx-app",
-  "author": {
-    "name": "Alair Tavares (Júnior)",
-    "email": "alairjt@gmail.com",
-    "url": "https://github.com/alairjt"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alairjt/nx-app.git"
   },
+  "author": "Alair Tavares <alairjt@gmail.com> (Júnior)",
   "scripts": {
     "test": "mocha"
   },
@@ -25,10 +24,18 @@
     "yosay": "^1.0.2",
     "shelljs": "*",
     "nx-utils": "*",
+    "lodash": "^3.6.0",
     "underscore.string": "^3.0.3",
     "html-wiring": "^1.1.0"
   },
   "devDependencies": {
     "mocha": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/alairjt/nx-app/issues"
+  },
+  "homepage": "https://github.com/alairjt/nx-app#readme",
+  "directories": {
+    "test": "test"
   }
 }
