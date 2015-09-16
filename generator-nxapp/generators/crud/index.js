@@ -6,6 +6,7 @@
             lodash = require('lodash'),
             underscore = require('underscore.string'),
             utils = require('./utils.js'),
+            genUtils = require('../genUtils.js'),
             strUtils = require('../strUtils.js'),
             menuUtils = require('../menuUtils.js'),
             promptField = require('./prompts/field.js'),
@@ -17,7 +18,7 @@
         constructor: function () {
             yeoman.generators.Base.apply(this, arguments);
 
-            //TODO: Verificar se a aplicação da criada para poder criar o crud
+            genUtils.checkApp();
         },
         prompting: function () {
             var self = this,
@@ -90,12 +91,12 @@
                 var pathView = crudName.toLowerCase().concat('/').concat(tipoController.toLowerCase()).concat(self.capitalize(crudName)).concat('.html');
 
                 if (self.attrs.tipoVisualizacao === 'Simples') {
-                    self.template('_.'.concat(tipoController).concat('.view.html'), pathView);
+                    self.template('_.'.concat(tipoController).concat('.view.html'), genUtils.getBaseDir() + pathView);
                 } else {
-                    self.template('_.'.concat(tipoController).concat('.agrupada.view.html'), pathView);
+                    self.template('_.'.concat(tipoController).concat('.agrupada.view.html'), genUtils.getBaseDir() + pathView);
                 }
-                self.template('_.'.concat(tipoController).concat('.controller.js'), pathController);
-                self.template('_.'.concat(tipoController).concat('.controller.test.js'), pathControllerTest);
+                self.template('_.'.concat(tipoController).concat('.controller.js'), genUtils.getBaseDir() + pathController);
+                self.template('_.'.concat(tipoController).concat('.controller.test.js'), genUtils.getBaseDir() + pathControllerTest);
 
                 utils.adicionarScriptAoIndex(pathController);
                 
@@ -118,7 +119,7 @@
             
             var gerarTemplateBasico = function (template, crudName, endName) {
                 var pathService = crudName.toLowerCase().concat('/').concat(self.capitalize(self.crudName).concat(endName));
-                self.template(template, pathService);
+                self.template(template, genUtils.getBaseDir() + pathService);
                 utils.adicionarScriptAoIndex(pathService);
             };
             

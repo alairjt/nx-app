@@ -1,7 +1,8 @@
 'use strict';
-var yeoman = require('yeoman-generator');
-var utils = require('nx-utils');
-var shell = require('shelljs');
+var yeoman = require('yeoman-generator'),
+    utils = require('nx-utils'),
+    strUtils = require('../strUtils'),
+    shell = require('shelljs');
 
 module.exports = yeoman.generators.Base.extend({
     constructor: function () {
@@ -37,7 +38,8 @@ module.exports = yeoman.generators.Base.extend({
 
         self.prompt(prompts, function (props) {
             self.props = props;
-            self.props.appName = self.props.appName || self.appName;
+            self.props.appName = strUtils.replaceAll((self.props.appName || self.appName), " ", "");
+            self.strUtils = strUtils;
 
             done();
         }.bind(self));

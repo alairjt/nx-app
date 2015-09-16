@@ -25,6 +25,7 @@
     "shelljs": "*",
     "nx-utils": "*",
     "lodash": "^3.6.0",
+    "fs-extra": "^0.24.0",
     "underscore.string": "^3.0.3",
     "html-wiring": "^1.1.0"
   },

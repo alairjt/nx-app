@@ -10,7 +10,7 @@ var app = angular.module("hiveApp", modules);
  * 
 
 app.provider('appConfig', ['HIVE_COMMON', function (HIVE_COMMON) {
-    this.configs = HIVE_COMMON.applications.<%=props.appName%>;
+    this.configs = HIVE_COMMON.applications.<%=strUtils.decapitalize(props.appName)%>;
     this.$get = function () {
         var configs = this.configs;
         return {

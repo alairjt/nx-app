@@ -3,17 +3,15 @@
 
     var wiring = require('html-wiring'),
         lodash = require('lodash'),
-        strUtils = require('../strUtils');
+        strUtils = require('../strUtils'),
+        genUtils = require('../genUtils'),
+        fs = require('fs-extra');
         
-    var getBaseDir = function () {
-        return process.cwd().split("\\").pop() === "src" ? "" : "src/";
-    };
-
     var adicionarScriptAoIndex = function (path) {
         var script = '\t<script src="'.concat(path).concat('"></script>\r\n');
-        wiring.appendToFile(getBaseDir().concat('index.html'), 'html', script);
+        wiring.appendToFile(genUtils.getBaseDir().concat('index.html'), 'html', script);
     };
-
+    
     var getDisplayField = function (crudName, field) {
         var mask = obterInputType(field.tipo).mask;
         var filter = mask !== '' ? ' | ' + mask : "";

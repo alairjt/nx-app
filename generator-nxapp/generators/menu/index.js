@@ -1,14 +1,17 @@
 'use strict';
+
 var yeoman = require('yeoman-generator');
-var utils = require('nx-utils');
 var shell = require('shelljs');
 var menuUtils = require('../menuUtils.js');
+var genUtils = require('../genUtils.js');
 
 module.exports = yeoman.generators.Base.extend({
     constructor: function () {
         yeoman.generators.Base.apply(this, arguments);
 
         this.argument('menuName', {type: String, required: true});
+
+        genUtils.checkApp();
     },
     execute: function () {
         if (menuUtils.menuExists(this.menuName)) {

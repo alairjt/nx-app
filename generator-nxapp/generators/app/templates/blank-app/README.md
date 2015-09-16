@@ -1,6 +1,8 @@
 <%=props.appName%>
 =================
 
-1) Adicionar configurações da aplicação no arquivo HiveCommon.js do projeto HiveCommon.
+1) Add following app configs in 'constants/HiveCommon.js' on HiveCommon project.
 
-2) Descomentar provider 'appConfig' no arquivo app.js.
+    <%=strUtils.decapitalize(props.appName)%>: {name: '<%=props.appName.toUpperCase() %>', baseUrl: '/<%=props.appName%>/', title: '<%=props.appName%>', class: "glyphicon glyphicon-cog", parent: hiveWeb}
+
+2) Uncomment provider 'appConfig' at file app.js.
