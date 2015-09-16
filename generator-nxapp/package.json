@@ -1,6 +1,6 @@
 {
   "name": "generator-nxapp",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Web App Hive Generator",
   "license": "MIT",
   "main": "app/index.js",

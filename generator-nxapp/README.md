@@ -70,15 +70,15 @@ Example:
 yo nxapp:crud user --install
 ```
 
-Produces `src/user/User.js`
-Produces `src/user/UserConfig.js`
-Produces `src/user/UserService.js`
-Produces `src/user/consultaUser.html`
-Produces `src/user/ConsultaUserController.js`
-Produces `src/user/formularioUser.html`
-Produces `src/user/FormularioUserController.html`
+Produces `src/user/User.js`.
+Produces `src/user/UserConfig.js`.
+Produces `src/user/UserService.js`.
+Produces `src/user/consultaUser.html`.
+Produces `src/user/ConsultaUserController.js`.
+Produces `src/user/formularioUser.html`.
+Produces `src/user/FormularioUserController.html`.
 
-Automatically add crud files in `src/index.html`
+Automatically add crud files in `src/index.html`.
 
 
 ## Changelog
