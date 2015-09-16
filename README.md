@@ -72,7 +72,7 @@ yo nxapp:crud user --install
 
 Produces `src/user/User.js`
 
-Produces `src/user/UserConfig.js`.
+Produces `src/user/UserConfig.js`
 
 Produces `src/user/UserService.js`
 
