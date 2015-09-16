@@ -1,0 +1,8 @@
+/nbproject/
+/config/node_modules/
+/config/qa/
+/dist/
+/dist-zip/
+/config/.bowerrc
+/src/lib/
+/.idea/

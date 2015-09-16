@@ -1,0 +1,16 @@
+{
+    "aplicacao": {
+        "nome": "<%=props.appName%>",
+        "href": "home"
+    },
+    "menus": [
+        {
+            "url": "consultas",
+            "nome": "Consultas",
+            "href": "home",
+            "id": "consultas",
+            "submenus": [
+            ]
+        }
+    ]
+}
