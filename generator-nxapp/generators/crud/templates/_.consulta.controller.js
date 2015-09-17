@@ -31,7 +31,7 @@
                     $scope.<%= crudName.toLowerCase() %>Selecionado = registro;
                 };
                 
-                <% if (attrs.tipoVisualizacao === 'Agrupada') { %>
+                <% if (attrs.tipoVisualizacao === 'Grouped') { %>
                     $scope.expandir = function (grupo) {
                        $scope.grupoExpandido = ($scope.grupoExpandido === grupo) ? {} : grupo;
                     };

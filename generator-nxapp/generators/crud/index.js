@@ -90,7 +90,7 @@
                 var pathControllerTest = '../test/spec/'.concat(crudName.toLowerCase()).concat('/').concat(nomeController).concat('Test.js');
                 var pathView = crudName.toLowerCase().concat('/').concat(tipoController.toLowerCase()).concat(self.capitalize(crudName)).concat('.html');
 
-                if (self.attrs.tipoVisualizacao === 'Simples') {
+                if (self.attrs.tipoVisualizacao === 'Simple') {
                     self.template('_.'.concat(tipoController).concat('.view.html'), genUtils.getBaseDir() + pathView);
                 } else {
                     self.template('_.'.concat(tipoController).concat('.agrupada.view.html'), genUtils.getBaseDir() + pathView);

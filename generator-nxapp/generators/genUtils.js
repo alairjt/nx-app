@@ -13,7 +13,7 @@
     
     var checkApp = function () {
         if (!appExists()) {
-            throw new Error("App is not defined. Run 'yo nx-app' for to create a new app.");
+            throw new Error("App is not defined. Before run 'yo nx-app' to create a new app.");
         }
     };
 

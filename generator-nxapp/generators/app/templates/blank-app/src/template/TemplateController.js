@@ -7,5 +7,5 @@ app.controller('templateController', ['$scope', 'TemplateService', 'HIVE_COMMON'
     $scope.HIVE_COMMON = HIVE_COMMON;    
     
     //Define o menu ativo do cabeçalho
-    $scope.application = HIVE_COMMON.applications.<%=props.appName%>; 
+    $scope.application = HIVE_COMMON.applications.<%=strUtils.decapitalize(props.appName)%>; 
 }]);

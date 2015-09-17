@@ -4,15 +4,15 @@
     var prompts = [{
             type: 'input',
             name: 'nome',
-            message: 'Nome do campo'
+            message: 'Field name'
         }, {
             type: 'input',
             name: 'label',
-            message: 'Label do campo'
+            message: 'Field label'
         }, {
             type: "list",
             name: "tipo",
-            message: "Tipo do campo",
+            message: "Field type",
             default: "String",
             choices: [
                 "CNPJ / CPF",
@@ -30,7 +30,7 @@
             },
             type: "confirm",
             name: "comboboxDataFromService",
-            message: "Os dados da combobox serão carregados a partir de um serviço?",
+            message: "Combobox data loaded from a service",
             default: true
         }, {
             when: function (data) {
@@ -38,7 +38,7 @@
             },
             type: "confirm",
             name: "comboboxRecursoExistente",
-            message: "Serviço/Recurso já utilizado na WEB?",
+            message: "Service and resource exists in the Web apps",
             default: true
         }, {
             when: function (data) {
@@ -46,25 +46,25 @@
             },
             type: "input",
             name: "comboboxService",
-            message: "Informe o serviço/recurso a ser criado (ex.: SERVICES.banco.bancos)"
+            message: "Service/Resource that will be created (ex.: SERVICES.banco.bancos)"
         }, {
             when: function (data) {
                 return data.tipo === 'Combobox' && data.comboboxDataFromService && data.comboboxRecursoExistente;
             },
             type: "input",
             name: "comboboxService",
-            message: "Informe o serviço/recurso a ser utilizado (ex.: Bancos)"
+            message: "Service/Resource name (ex.: Bancos)"
         }, {
             when: function (data) {
                 return data.tipo === 'Combobox' && !data.comboboxDataFromService;
             },
             type: "input",
             name: "comboboxData",
-            message: "Informe os dados da combobox no formato Chave1:Valor1;Chave2:Valor2"
+            message: "Combobox data (ex.: Chave1:Valor1;Chave2:Valor2)"
         }, {
             type: "checkbox",
             name: "telas",
-            message: "Utilizar o campo nas telas:",
+            message: "Add field to pages",
             choices: [
                 "consulta",
                 "formulario"
@@ -72,7 +72,7 @@
         }, {
             type: 'confirm',
             name: 'adicionarOutro',
-            message: 'Adicionar outro campo?',
+            message: 'Add another field',
             default: true
         }
     ];

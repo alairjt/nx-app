@@ -18,12 +18,6 @@
                         }
 
                     })
-                    .state('home.consultas', {
-                        data: {
-                            hideMessagesForHTTPCodes : [],
-                            displayName: 'Consultas'
-                        }
-                    })
                     ;
         }]);
 })();

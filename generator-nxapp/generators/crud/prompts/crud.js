@@ -1,54 +1,52 @@
-(function () {    
+(function () {
     'use strict';
-    
-    var utils = require('../utils.js');
-    var menuUtils = require('../../menuUtils.js');
-    
-    var prompts = [{
+
+    var menuUtils = require('../../menuUtils.js'),
+        prompts = [{
                     type: "input",
                     name: 'crudName',
-                    message: 'Qual o nome do CRUD?'
+                    message: 'CRUD name'
                 }, {
                     type: "list",
                     name: "menu",
-                    message: "Adicionar ao menu?",
+                    message: "Add to the menu",
                     choices: function () {
                         return menuUtils.getMenus();
                     }
                 }, {
                     type: "list",
                     name: "tipoVisualizacao",
-                    message: "Qual tipo da consulta?",
+                    message: "Search type",
                     choices: [
-                        'Simples',
-                        'Agrupada'
+                        'Simple',
+                        'Grouped'
                     ],
-                    default: 'Simples'
+                    default: 'Simple'
                 }, {
                     when: function (response) {
-                        return response.tipoVisualizacao === 'Agrupada';
+                        return response.tipoVisualizacao === 'Grouped';
                     },
                     type: "input",
                     name: "campoGrupo",
-                    message: "Informe o nome do campo a ser agrupado"
+                    message: "Field name that will be grouped"
                 }, {
                     when: function (response) {
-                        return response.tipoVisualizacao === 'Agrupada';
+                        return response.tipoVisualizacao === 'Grouped';
                     },
                     type: "input",
                     name: "campoGrupoDetalhes",
-                    message: "Informe o nome do campo dos detalhes"
+                    message: "Field name of the details"
                 }, {
                     when: function (response) {
-                        return response.tipoVisualizacao === 'Agrupada';
+                        return response.tipoVisualizacao === 'Grouped';
                     },
                     type: "input",
                     name: "campoGrupoTotal",
-                    message: "Informe o nome do campo do totalizador"
+                    message: "Field name of totals"
                 }, {
                     type: "list",
                     name: "servico",
-                    message: "Qual serviço utilizar?",
+                    message: "Service name",
                     choices: [
                         "banco",
                         "cartao",
@@ -66,7 +64,7 @@
                     },
                     type: "input",
                     name: "recurso",
-                    message: "Qual recurso será utilizado?"
+                    message: "Resource name"
                 }];
 
     module.exports = {

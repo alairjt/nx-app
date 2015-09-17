@@ -4,7 +4,7 @@
     var prompts = [{
             type: 'confirm',
             name: 'finalizar',
-            message: 'Finalizar?',
+            message: 'End?',
             default: true
         }
     ];

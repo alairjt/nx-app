@@ -2,15 +2,20 @@
 var yeoman = require('yeoman-generator'),
     utils = require('nx-utils'),
     strUtils = require('../strUtils'),
-    shell = require('shelljs');
+    shell = require('shelljs'),
+    genUtils = require('../genUtils.js');
 
 module.exports = yeoman.generators.Base.extend({
     constructor: function () {
         yeoman.generators.Base.apply(this, arguments);
         
         this.option('install');
-        this.option('noinstall'); //Todo: Aplicar
+        this.option('noinstall');
         this.argument('appName', { type: String, required: false });
+        
+        if (genUtils.appExists()) {
+            throw new Error("App already exists");
+        }
     },
     prompting: function () {
         var self = this;
@@ -24,15 +29,15 @@ module.exports = yeoman.generators.Base.extend({
                 },
                 type: 'text',
                 name: 'appName',
-                message: 'Nome da aplicação',
+                message: 'App name',
                 default: process.cwd().split("\\").pop()
             }, {
                 when: function () {
-                    return !self.options.install;
+                    return !self.options.install && !self.options.noinstall;
                 },
                 type: 'confirm',
                 name: 'installDependencies',
-                message: 'Instalar dependencias?',
+                message: 'Install dependencies?',
                 default: true
             }];
 
