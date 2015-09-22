@@ -1,18 +1,19 @@
 (function () {
     'use strict';
 
-    var menuUtils = require('../../menuUtils.js'),
-        prompts = [{
+    var prompts = [{
                     type: "input",
                     name: 'crudName',
                     message: 'CRUD name'
                 }, {
-                    type: "list",
+                    type: "input",
                     name: "menu",
-                    message: "Add to the menu",
-                    choices: function () {
-                        return menuUtils.getMenus();
-                    }
+                    message: "Add to the menu"
+                }, {
+                    type: "confirm",
+                    name: "createMenu",
+                    message: "Create menu",
+                    default: false
                 }, {
                     type: "list",
                     name: "tipoVisualizacao",
@@ -44,20 +45,9 @@
                     name: "campoGrupoTotal",
                     message: "Field name of totals"
                 }, {
-                    type: "list",
+                    type: "input",
                     name: "servico",
-                    message: "Service name",
-                    choices: [
-                        "banco",
-                        "cartao",
-                        "cliente",
-                        "endereco",
-                        "grupo",
-                        "pagamentoCadastro",
-                        "pagamentoOperacao",
-                        "rbac",
-                        "rbacPermissoes"
-                    ]
+                    message: "Service name"
                 }, {
                     when: function (response) {
                         return !response.novoRecurso;

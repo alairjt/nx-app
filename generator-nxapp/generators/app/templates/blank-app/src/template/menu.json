@@ -1,8 +1,0 @@
-{
-    "aplicacao": {
-        "nome": "<%=props.appName%>",
-        "href": "home"
-    },
-    "menus": [
-    ]
-}

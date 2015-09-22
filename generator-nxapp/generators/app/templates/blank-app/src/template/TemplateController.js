@@ -1,8 +1,4 @@
-app.controller('templateController', ['$scope', 'TemplateService', 'HIVE_COMMON', function($scope, TemplateService, HIVE_COMMON) {   
-    TemplateService.getMenu().success(function (data) {
-        $scope.menus = data;
-    });
-    
+app.controller('templateController', ['$scope', 'HIVE_COMMON', function($scope, HIVE_COMMON) {   
     //Carrega as constantes para uso no menu do HIVE
     $scope.HIVE_COMMON = HIVE_COMMON;    
     

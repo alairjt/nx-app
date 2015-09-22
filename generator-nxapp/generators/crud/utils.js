@@ -1,17 +1,9 @@
 (function () {
     'use strict';
 
-    var wiring = require('html-wiring'),
-        lodash = require('lodash'),
-        strUtils = require('../strUtils'),
-        genUtils = require('../genUtils'),
-        fs = require('fs-extra');
+    var lodash = require('lodash'),
+        strUtils = require('../strUtils');
         
-    var adicionarScriptAoIndex = function (path) {
-        var script = '\t<script src="'.concat(path).concat('"></script>\r\n');
-        wiring.appendToFile(genUtils.getBaseDir().concat('index.html'), 'html', script);
-    };
-    
     var getDisplayField = function (crudName, field) {
         var mask = obterInputType(field.tipo).mask;
         var filter = mask !== '' ? ' | ' + mask : "";
@@ -135,7 +127,6 @@
     };
 
     module.exports = {
-        adicionarScriptAoIndex: adicionarScriptAoIndex,
         efetuarParseComboboxData: efetuarParseComboboxData,
         getDisplayField: getDisplayField,
         hasFieldFormulario: hasFieldFormulario,

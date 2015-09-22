@@ -3,8 +3,8 @@
     'use strict';
 
     var yeoman = require('yeoman-generator'),
-        menuUtils = require('../menuUtils.js'),
-        genUtils = require('../genUtils.js');
+        genUtils = require('../genUtils.js'),
+        strUtils = require('../strUtils.js');
 
     module.exports = yeoman.generators.Base.extend({
         constructor: function () {
@@ -15,20 +15,11 @@
             genUtils.checkApp();
         },
         execute: function () {
-            if (menuUtils.menuExists(this.menuName)) {
-                this.log("Menu already exists");
-                return;
-            }
-
-            menuUtils.addMenu(this.menuName);
-            this.log("Menu created");
-            this.log("Add following code in app/route.js");
-            this.log(".state('home." + this.menuName.toLowerCase() + "', { \n" +
-                    "     data: { \n" +
-                    "     hideMessagesForHTTPCodes : [], \n" +
-                    "     displayName: '" + this.menuName.toLowerCase() + "' \n" +
-                    "   } \n" +
-                    " })");
+            this.capitalize = strUtils.capitalize;
+            this.menu = this.menuName;
+            var pathMenuConfig = "app/" + this.menu + "Config.js";
+            this.template('_.menu.config.js', genUtils.getBaseDir() + pathMenuConfig);
+            genUtils.adicionarScriptAoIndex(pathMenuConfig);
         }
     });
 }());

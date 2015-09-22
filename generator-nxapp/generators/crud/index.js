@@ -8,7 +8,6 @@
             utils = require('./utils.js'),
             genUtils = require('../genUtils.js'),
             strUtils = require('../strUtils.js'),
-            menuUtils = require('../menuUtils.js'),
             promptField = require('./prompts/field.js'),
             promptCrud = require('./prompts/crud.js'),
             promptFim = require('./prompts/finalizar.js'),
@@ -79,7 +78,7 @@
                     self.field = self.fields[key];
                     var pathResource = self.crudName.toLowerCase().concat('/').concat(self.capitalize(self.field.nome)).concat('.js');
                     self.template('_.resource_field.js', pathResource);
-                    utils.adicionarScriptAoIndex(pathResource);
+                    genUtils.adicionarScriptAoIndex(pathResource);
                     self.field.comboboxService = self.capitalize(self.field.nome);
                 }
             }
@@ -98,7 +97,7 @@
                 self.template('_.'.concat(tipoController).concat('.controller.js'), genUtils.getBaseDir() + pathController);
                 self.template('_.'.concat(tipoController).concat('.controller.test.js'), genUtils.getBaseDir() + pathControllerTest);
 
-                utils.adicionarScriptAoIndex(pathController);
+                genUtils.adicionarScriptAoIndex(pathController);
                 
                 return {
                     nomeController: nomeController,
@@ -120,14 +119,18 @@
             var gerarTemplateBasico = function (template, crudName, endName) {
                 var pathService = crudName.toLowerCase().concat('/').concat(self.capitalize(self.crudName).concat(endName));
                 self.template(template, genUtils.getBaseDir() + pathService);
-                utils.adicionarScriptAoIndex(pathService);
+                genUtils.adicionarScriptAoIndex(pathService);
             };
             
             gerarTemplateBasico('_.service.js', self.crudName, 'Service.js');
             gerarTemplateBasico('_.resource.js', self.crudName, '.js');
             gerarTemplateBasico('_.route.config.js', self.crudName, 'Config.js');
-
-            menuUtils.addSubMenu(self.crudName, self.menu);
+            
+            if (self.attrs.createMenu) {
+                var pathMenuConfig = "app/" + self.attrs.menu + "Config.js";
+                self.template('_.menu.config.js', genUtils.getBaseDir() + pathMenuConfig);
+                genUtils.adicionarScriptAoIndex(pathMenuConfig);
+            }
         }
     });
 })();

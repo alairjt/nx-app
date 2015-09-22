@@ -12,6 +12,7 @@
                         }
                     },
                     data: {
+                        displayMenu: true,
                         displayName: '<%= capitalize(crudName) %>',
                         operacoes: []
                     }
@@ -27,6 +28,7 @@
                             }
                         },
                         data: {
+                            displayMenu: false,
                             displayName: 'Novo',
                             operacoes: []
                         }
@@ -41,6 +43,7 @@
                             }
                         },
                         data: {
+                            displayMenu: false,
                             displayName: 'Editar',
                             operacoes: []
                         }
