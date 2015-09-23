@@ -50,7 +50,7 @@ module.exports = yeoman.generators.Base.extend({
         }.bind(self));
     },
     renderControllerFiles: function () {
-        this.directory(this.templatePath('blank-app'), this.destinationPath());
+        this.directory(this.templatePath('hive-app'), this.destinationPath());
     },
     install: function () {
         if (this.props.installDependencies || this.options.install) {
