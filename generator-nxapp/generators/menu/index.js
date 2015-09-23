@@ -17,7 +17,7 @@
         execute: function () {
             this.capitalize = strUtils.capitalize;
             this.menu = this.menuName;
-            var pathMenuConfig = "app/" + this.menu + "Config.js";
+            var pathMenuConfig = "route/" + this.menu + "Config.js";
             this.template('_.menu.config.js', genUtils.getBaseDir() + pathMenuConfig);
             genUtils.adicionarScriptAoIndex(pathMenuConfig);
         }

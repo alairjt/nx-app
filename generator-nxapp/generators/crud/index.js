@@ -127,7 +127,7 @@
             gerarTemplateBasico('_.route.config.js', self.crudName, 'Config.js');
             
             if (self.attrs.createMenu) {
-                var pathMenuConfig = "app/" + self.attrs.menu + "Config.js";
+                var pathMenuConfig = "route/" + self.attrs.menu + "Config.js";
                 self.template('_.menu.config.js', genUtils.getBaseDir() + pathMenuConfig);
                 genUtils.adicionarScriptAoIndex(pathMenuConfig);
             }
