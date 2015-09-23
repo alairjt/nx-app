@@ -9,9 +9,17 @@ module.exports = yeoman.generators.Base.extend({
     constructor: function () {
         yeoman.generators.Base.apply(this, arguments);
         
+        this.applicationTypes = getApplicationTypes();
+        
         this.option('install');
         this.option('noinstall');
+        this.option('type');
+
         this.argument('appName', { type: String, required: false });
+        
+        this.options.type = this.options.type || this.applicationTypes[0];
+        
+        checkTypeOptions(this.options.type);
         
         if (genUtils.appExists()) {
             throw new Error("App already exists");
@@ -50,7 +58,7 @@ module.exports = yeoman.generators.Base.extend({
         }.bind(self));
     },
     renderControllerFiles: function () {
-        this.directory(this.templatePath('hive-app'), this.destinationPath());
+        this.directory(this.templatePath(this.options.type), this.destinationPath());
     },
     install: function () {
         if (this.props.installDependencies || this.options.install) {
@@ -59,3 +67,19 @@ module.exports = yeoman.generators.Base.extend({
         }
     }
 });
+
+var getApplicationTypes = function () {
+    return ["hive-app", "blank-app"];
+};
+
+var checkTypeOptions = function (typeOption) {
+    var applicationTypes = getApplicationTypes();
+
+    if (typeOption === true) {
+        throw new Error("The option value must be set. (--type blank-app)");
+    }
+
+    if (applicationTypes.indexOf(typeOption) === -1) {
+        throw new Error("Invalid app type: ".concat(typeOption));
+    }
+};

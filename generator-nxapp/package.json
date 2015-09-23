@@ -1,6 +1,6 @@
 {
   "name": "generator-nxapp",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Web App Hive Generator",
   "license": "MIT",
   "main": "app/index.js",
@@ -30,7 +30,8 @@
     "html-wiring": "^1.1.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "request": "^2.63.0"
   },
   "bugs": {
     "url": "https://github.com/alairjt/nx-app/issues"

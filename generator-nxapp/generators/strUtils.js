@@ -18,7 +18,14 @@
         return underscore.replaceAll(string, find, replace, true);
     };
     
+    var camelize = function (string, decapitalize) {
+        string = replaceAll(string, "/", "-");
+        
+        return underscore.camelize(string, decapitalize);
+    };
+    
     module.exports = {
+        camelize: camelize,
         capitalize: capitalize,
         decapitalize: decapitalize,
         replaceAll: replaceAll

@@ -77,7 +77,7 @@
                 input = criarInputImagem(crudName, field);
                 break;
             default:
-                throw new Error("Tipo inexistente");
+                input = criarInput(crudName, field);
                 break;
         }
 

@@ -11,11 +11,18 @@
             promptField = require('./prompts/field.js'),
             promptCrud = require('./prompts/crud.js'),
             promptFim = require('./prompts/finalizar.js'),
+            request = require('request'),
             fields = [];
-            
+
     module.exports = yeoman.generators.Base.extend({
         constructor: function () {
-            yeoman.generators.Base.apply(this, arguments);
+            var self = this;
+            yeoman.generators.Base.apply(self, arguments);
+
+            self.option('swagger');
+            self.option('path');
+
+            loadFromSwagger(self);
 
             genUtils.checkApp();
         },
@@ -45,17 +52,21 @@
             };
 
             var ask = function () {
-                self.prompt(promptCrud.prompts, function (props) {
+                self.prompt(promptCrud.prompts(self), function (props) {
                     self.attrs = props;
                     self.crudName = props.crudName;
                     self.menu = props.menu.toLowerCase();
-                    self.servico = props.servico;
-                    self.recurso = props.recurso;
+                    self.servico = props.servico || self.servico;
+                    self.recurso = props.recurso || self.path;
                     self.campoGrupo = props.campoGrupo;
                     self.campoGrupoDetalhes = props.campoGrupoDetalhes;
                     self.campoGrupoTotal = props.campoGrupoTotal;
 
-                    askField();
+                    if (fields.length === 0) {
+                        askField();
+                    } else {
+                        utils.processarRetornoPrompt(false, false, askFim);
+                    }
                 }.bind(self));
             };
 
@@ -98,7 +109,7 @@
                 self.template('_.'.concat(tipoController).concat('.controller.test.js'), genUtils.getBaseDir() + pathControllerTest);
 
                 genUtils.adicionarScriptAoIndex(pathController);
-                
+
                 return {
                     nomeController: nomeController,
                     pathController: pathController,
@@ -109,23 +120,23 @@
             var consultaController = gerarTemplatesCrud(self.crudName, 'consulta');
             self.pathConsultaView = consultaController.pathView;
             self.nomeConsultaController = consultaController.nomeController;
-            
+
             if (self.showFormulario) {
                 var formularioController = gerarTemplatesCrud(self.crudName, 'formulario');
                 self.pathFormularioView = formularioController.pathView;
                 self.nomeFormularioController = formularioController.nomeController;
             }
-            
+
             var gerarTemplateBasico = function (template, crudName, endName) {
                 var pathService = crudName.toLowerCase().concat('/').concat(self.capitalize(self.crudName).concat(endName));
                 self.template(template, genUtils.getBaseDir() + pathService);
                 genUtils.adicionarScriptAoIndex(pathService);
             };
-            
+
             gerarTemplateBasico('_.service.js', self.crudName, 'Service.js');
             gerarTemplateBasico('_.resource.js', self.crudName, '.js');
             gerarTemplateBasico('_.route.config.js', self.crudName, 'Config.js');
-            
+
             if (self.attrs.createMenu) {
                 var pathMenuConfig = "route/" + self.attrs.menu + "Config.js";
                 self.template('_.menu.config.js', genUtils.getBaseDir() + pathMenuConfig);
@@ -133,4 +144,38 @@
             }
         }
     });
+
+    var createFieldDefault = function (name, propertie) {
+        return {
+            "nome": name,
+            "tipo": strUtils.capitalize(propertie.type),
+            "telas": ["consulta", "formulario"],
+            "label": strUtils.capitalize(name)
+        };
+    };
+
+    var loadFromSwagger = function (self) {
+        if (typeof self.options.swagger === "string") {
+            request(self.options.swagger, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    var appSwagger = JSON.parse(body);
+
+                    self.servico = strUtils.camelize(appSwagger.basePath, true);
+                    self.path = self.options.path;
+                    var pathApp = appSwagger.paths["/".concat(self.path)];
+
+                    if (typeof pathApp !== "object") {
+                        throw new Error("Path not exists: ".concat(self.path));
+                    }
+
+                    var pathAppDefinition = pathApp.get.responses['200'].schema['$ref'].split("/").pop();
+                    var pathProperties = appSwagger.definitions[pathAppDefinition].properties;
+
+                    for (var key in pathProperties) {
+                        fields.push(createFieldDefault(key, pathProperties[key]));
+                    }
+                }
+            });
+        }
+    };
 })();
