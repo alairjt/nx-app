@@ -28,19 +28,18 @@ module.exports = function (config) {
             'https://aenhive-dev.nexxera.com/Library/ng-flow-2.5.1/src/directives/*.js',
             'https://aenhive-dev.nexxera.com/Library/ng-flow-2.5.1/src/*.js',
             'https://aenhive-dev.nexxera.com/Library/angular-ui-select-0.11.2/dist/select.js',
-            
-            'src/app/*.js',
-            
-            'https://aenhive-dev.nexxera.com/Library/hivecommon-1.0.2/scripts-commons.js',
-            'https://aenhive-dev.nexxera.com/Library/nexxeraComponents-1.2.0/scripts-nexxera.js',
 
-            'test/testMockRun.js',
-            'src/app/*.js',
-            'src/**/*.tpl.html',
-            'test/**/*.js',
+            'http://localhost:9000/NexxeraStyles/scripts-style.js',
+            'http://localhost:9000/NexxeraComponents/scripts-nexxera.js',
+            'http://localhost:9000/HiveCommon/scripts-commons.js',
             
-            'src/*/*.js',
-            'src/*/*/*.js'
+            'src/**/*.js',
+            'src/**/**/*.js',
+            'src/**/**/**/*.js',
+            'src/**/*.tpl.html',
+            'src/**/**/*.tpl.html',
+            'src/**/**/**/*.tpl.html',
+            'test/**/*.js'
         ],
         // list of files to exclude
         exclude: [
@@ -67,14 +66,14 @@ module.exports = function (config) {
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['spec', 'coverage'],
+        reporters: ['spec', 'junit', 'coverage'],
         // web server port
-        port: 9879,
+        port: 9881,
         // enable / disable colors in the output (reporters and logs)
         colors: true,
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_DISABLE,
+        logLevel: config.LOG_ERROR,
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: true,
         // start these browsers
@@ -84,7 +83,10 @@ module.exports = function (config) {
         // if true, Karma captures browsers, runs the tests and exits
         singleRun: true,
         // optionally, configure the reporter
-
+        junitReporter: {
+            outputFile: 'config/qa/test-results.xml'
+        },
+        // optionally, configure the reporter
         coverageReporter: {
             reporters: [
                 {type: 'html', dir: 'config/qa/coverage'},

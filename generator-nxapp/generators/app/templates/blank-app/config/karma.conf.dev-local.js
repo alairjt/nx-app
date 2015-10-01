@@ -4,60 +4,46 @@
 module.exports = function (config) {
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: '../',
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['jasmine'],
         // list of files / patterns to load in the browser
         files: [
-            'https://aenhive-dev.nexxera.com/Library/angular-1.2.25/angular.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-resource-1.2.25/angular-resource.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-animate-1.2.25/angular-animate.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-sanitize-1.2.25/angular-sanitize.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-ui-router-0.2.11/release/angular-ui-router.js',
+            'https://code.jquery.com/jquery-1.11.3.min.js',
+            'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js',
             'https://aenhive-dev.nexxera.com/Library/angular-mocks-1.2.25/angular-mocks.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-route-1.2.25/angular-route.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-ui-utils-0.1.1/ui-utils.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-bootstrap-0.11.0/ui-bootstrap.js',
-            'https://aenhive-dev.nexxera.com/Library/jquery-1.11.1/dist/jquery.min.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-google-chart-0.0.11/ng-google-chart.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-translate-2.4.2/angular-translate.js',
+            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js',
+            'https://aenhive-dev.nexxera.com/Library/angular-ui-router-0.2.11/release/angular-ui-router.js',
+            'https://aenhive-dev.nexxera.com/Library/angular-translate-2.4.0/angular-translate.js',
             'https://aenhive-dev.nexxera.com/Library/angular-translate-loader-partial-2.4.0/angular-translate-loader-partial.js',
             'https://aenhive-dev.nexxera.com/Library/angular-base64-2.0.1/angular-base64.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-strap-2.1.3/angular-strap.js',
-            'https://aenhive-dev.nexxera.com/Library/ng-flow-2.5.1/src/directives/*.js',
-            'https://aenhive-dev.nexxera.com/Library/ng-flow-2.5.1/src/*.js',
-            'https://aenhive-dev.nexxera.com/Library/angular-ui-select-0.11.2/dist/select.js',
-
             'https://aenhive-dev.nexxera.com/Library/designComponents-1.0.2/scripts-style.js',
             'https://aenhive-dev.nexxera.com/Library/nexxeraComponents-1.2.0/scripts-nexxera.js',
-            'https://aenhive-dev.nexxera.com/Library/hivecommon-1.0.2/scripts-commons.js',
 
-            '../src/**/*.js',
-            '../src/**/**/*.js',
-            '../src/**/**/**/*.js',
-            '../src/**/*.tpl.html',
-            '../src/**/**/*.tpl.html',
-            '../src/**/**/**/*.tpl.html',
-            '../test/**/*.js',
-
-            'qa/coverage/src/*/*.js',
-            'qa/coverage/src/*/*/*.js'
+            'src/**/*.js',
+            'src/**/**/*.js',
+            'src/**/**/**/*.js',
+            'src/**/*.tpl.html',
+            'src/**/**/*.tpl.html',
+            'src/**/**/**/*.tpl.html',
+            'test/**/*.js'
         ],
         // list of files to exclude
         exclude: [
-            '../test/lib/**/*.js'
+            'test/lib/**/*.js',
+            'src/lib/**/*.js'
         ],
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'qa/coverage/src/*.js': ['coverage'],
-            'qa/coverage/src/*/*.js': ['coverage'],
-            'qa/coverage/src/*/*/*.js': ['coverage'],
-            'qa/coverage/src/*/*/*/*.js': ['coverage'],
-            'qa/coverage/src/*/*/*/*/*.js': ['coverage'],
-            'qa/coverage/src/*/*/*/*/*/*.js': ['coverage'],
-            '../src/**/*.tpl.html': ['ng-html2js']
+            'src/*.js': ['coverage'],
+            'src/*/*.js': ['coverage'],
+            'src/*/*/*.js': ['coverage'],
+            'src/*/*/*/*.js': ['coverage'],
+            'src/*/*/*/*/*.js': ['coverage'],
+            'src/*/*/*/*/*/*.js': ['coverage'],
+            'src/**/*.tpl.html': ['ng-html2js']
         },
         ngHtml2JsPreprocessor: {
             cacheIdFromPath: function (filepath) {
@@ -70,12 +56,12 @@ module.exports = function (config) {
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: ['spec', 'junit', 'coverage'],
         // web server port
-        port: 9879,
+        port: 9881,
         // enable / disable colors in the output (reporters and logs)
         colors: true,
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+        logLevel: config.LOG_ERROR,
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: true,
         // start these browsers
@@ -86,13 +72,13 @@ module.exports = function (config) {
         singleRun: true,
         // optionally, configure the reporter
         junitReporter: {
-            outputFile: 'qa/test-results.xml'
+            outputFile: 'config/qa/test-results.xml'
         },
+        // optionally, configure the reporter
         coverageReporter: {
             reporters: [
-                {type: 'html', dir: 'qa/coverage'},
-                {type: 'text-summary', dir: 'qa/coverage'},
-                {type: 'cobertura', dir: 'qa/coverage'}
+                {type: 'html', dir: 'config/qa/coverage'},
+                {type: 'cobertura', dir: 'config/qa/coverage'}
             ]
         }
     });

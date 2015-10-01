@@ -12,17 +12,19 @@
     3.1) UNCOMMENT at file index.html
 
         <!-- Liberar para rodar local
-        <link rel="stylesheet" href="/NexxeraStyles/designComponents/stylesheet.css">
+        <link rel="stylesheet" href="/NexxeraStyles/stylesheet.css">
         -->
 
         <!--  Liberar para rodar local
+        <script src="/NexxeraStyles/scripts-style.js"></script>
         <script src="/NexxeraComponents/scripts-nexxera.js"></script>
         <script src="/HiveCommon/scripts-commons.js"></script>
         -->
 
     3.2) COMMENT at file index.html
 
-        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/designComponents-1.0.1/stylesheet.min.css">
+        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/designComponents-1.0.2/stylesheet.min.css">
 
+        <script src="https://aenhive-dev.nexxera.com/Library/designComponents-1.0.2/scripts-style.js"></script>
         <script src="https://aenhive-dev.nexxera.com/Library/nexxeraComponents-1.2.0/scripts-nexxera.js"></script>
         <script src="https://aenhive-dev.nexxera.com/Library/hivecommon-1.0.2/scripts-commons.js"></script>

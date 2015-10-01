@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="hiveApp">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <title><%=props.appName%></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.css">
+        <!--TODO: Library será retirado do subdomínio HIVE-->
+        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/designComponents-1.0.2/stylesheet.min.css">
+    </head>
+
+    <body>
+        <nx-layout>
+            <nx-header name="header">
+                <nx-header-menu name="header-menu">
+                    <nx-menu app-title="'<%=props.appName%>'"></nx-menu>
+                </nx-header-menu>
+            </nx-header>
+            <nx-footer name="footer">
+            </nx-footer>
+        </nx-layout>
+    </body>
+
+    <!-- Libs de Terceiros-->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js"></script>
+    <script src="https://aenhive-dev.nexxera.com/Library/angular-ui-router-0.2.11/release/angular-ui-router.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <!--TODO Library será retirado do subdomínio HIVE -->
+    <script src="https://aenhive-dev.nexxera.com/Library/angular-translate-2.4.0/angular-translate.js"></script>
+    <script src="https://aenhive-dev.nexxera.com/Library/angular-translate-loader-partial-2.4.0/angular-translate-loader-partial.js"></script>
+    <script src="https://aenhive-dev.nexxera.com/Library/angular-base64-2.0.1/angular-base64.js"></script>
+    <script src="https://aenhive-dev.nexxera.com/Library/designComponents-1.0.2/scripts-style.js"></script>
+    <script src="https://aenhive-dev.nexxera.com/Library/nexxeraComponents-1.2.0/scripts-nexxera.js"></script>
+    <!-- Não é necessário adicionar ao index de produção os arquivos exclusivos da aplicação -->
+    <script src="app/app.js"></script>
+    <script src="route/route.js"></script>
+    <script src="home/HomeController.js"></script>
+</html>

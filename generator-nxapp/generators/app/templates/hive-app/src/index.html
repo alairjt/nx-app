@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html ng-app="hiveApp">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <title><%=props.appName%></title>
-        <!--Folhas de Terceiros -->                
+        <!--Folhas de Terceiros -->
         <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/font-awesome-4.2.0/css/font-awesome.css">
         <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/bootstrap-3.3.4/dist/css/bootstrap.css">
         <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/bootstrap-3.3.4/dist/css/bootstrap-theme.css">
         <!-- Liberar para rodar local
-        <link rel="stylesheet" href="/NexxeraStyles/designComponents/stylesheet.css">
+        <link rel="stylesheet" href="/NexxeraStyles/stylesheet.css">
         -->
-        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/designComponents-1.0.1/stylesheet.min.css">
+        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/designComponents-1.0.2/stylesheet.min.css">
         <!--Folhas de Terceiros -->
         <!-- Novas sempre por ultimo.-->     
-        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/google-code-prettify-1.0.3/src/prettify.css">
-        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/animateCSS-3.2.3/animate.css">  
-        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/angular-ui-select-0.11.2/dist/select.css">
+        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/google-code-prettify-1.0.3/src/prettify.css" />
+        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/animateCSS-3.2.3/animate.css" />  
+        <link rel="stylesheet" href="https://aenhive-dev.nexxera.com/Library/angular-ui-select-0.11.2/dist/select.css" />
     </head>
 
-    <body>        
-        <nx-layout mostrar-favoritos="true"></nx-layout>
+    <body>
+        <nx-layout-hive></nx-layout-hive>
     </body>
-    <!-- Libs de Terceiros -->
+
+    <!-- Libs de Terceiros-->
     <script src="https://aenhive-dev.nexxera.com/Library/jquery-1.11.1/dist/jquery.js"></script>
     <script src="https://aenhive-dev.nexxera.com/Library/zeroclipboard-2.1.6/dist/ZeroClipboard.js"></script>
     <script src="https://aenhive-dev.nexxera.com/Library/angular-1.2.25/angular.js"></script>
@@ -31,7 +32,7 @@
     <script src="https://aenhive-dev.nexxera.com/Library/angular-animate-1.2.25/angular-animate.js"></script>
     <script src="https://aenhive-dev.nexxera.com/Library/angular-sanitize-1.2.25/angular-sanitize.js"></script>
     <script src="https://aenhive-dev.nexxera.com/Library/angular-i18n-1.2.25/angular-locale_pt-br.js"></script>
-    <script src="https://aenhive-dev.nexxera.com/Library/angular-ui-router-0.2.11/release/angular-ui-router.js"></script>
+    <script src="https://aenhive-dev.nexxera.com/Library/angular-ui-router-0.2.11/release/angular-ui-router.js" ></script>
     <script src="https://aenhive-dev.nexxera.com/Library/google-code-prettify-1.0.3/src/prettify.js"></script>
     <script src="https://aenhive-dev.nexxera.com/Library/bootstrap-3.3.4/dist/js/bootstrap.js"></script>
     <script src="https://aenhive-dev.nexxera.com/Library/angular-bootstrap-0.11.0/ui-bootstrap.js"></script>
@@ -45,12 +46,14 @@
     <script src="https://aenhive-dev.nexxera.com/Library/x2js-1.1.7/xml2json.js"></script>
     <script src="https://aenhive-dev.nexxera.com/Library/angular-base64-2.0.1/angular-base64.js"></script>
     <script src="https://aenhive-dev.nexxera.com/Library/angular-ui-select-0.11.2/dist/select.js"></script>
-    <!-- Libs Nexxera -->
+      <!-- Libs Nexxera -->
     <!--  Liberar para rodar local
+    <script src="/NexxeraStyles/scripts-style.js"></script>
     <script src="/NexxeraComponents/scripts-nexxera.js"></script>
     <script src="/HiveCommon/scripts-commons.js"></script>
     -->
     <!-- Comentar para rodar local -->
+    <script src="https://aenhive-dev.nexxera.com/Library/designComponents-1.0.2/scripts-style.js"></script>
     <script src="https://aenhive-dev.nexxera.com/Library/nexxeraComponents-1.2.0/scripts-nexxera.js"></script>
     <script src="https://aenhive-dev.nexxera.com/Library/hivecommon-1.0.2/scripts-commons.js"></script>
     <!-- Não é necessário adicionar ao index de produção os arquivos exclusivos exclusivos da aplicação -->
@@ -61,7 +64,6 @@
     <!-- CONSTANTS -->
     <!-- Services --> 
     <!-- Controllers -->
-    <script src="template/TemplateController.js"></script>
     <script src="home/HomeController.js"></script>
     <!-- Factories -->
 </html>
