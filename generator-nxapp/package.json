@@ -1,14 +1,14 @@
 {
   "name": "generator-nxapp",
-  "version": "0.0.13",
-  "description": "Web App Hive Generator",
+  "version": "0.0.14",
+  "description": "Nexx App Generator",
   "license": "MIT",
   "main": "app/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alairjt/nx-app.git"
   },
-  "author": "Alair Tavares <alairjt@gmail.com> (Júnior)",
+  "author": "Alair Tavares <alairjt@gmail.com>",
   "scripts": {
     "test": "mocha"
   },
