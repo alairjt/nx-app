@@ -5,11 +5,11 @@
         wiring = require('html-wiring');
 
     var getBaseDir = function () {
-        return process.cwd().split("\\").pop() === "src" ? "" : "src/";
+        return process.cwd().split("/").pop() === "app" ? "" : "app/";
     };
 
     var appExists = function () {
-        return fs.existsSync(getBaseDir().concat('app/app.js'));
+        return fs.existsSync(getBaseDir().concat('scripts/app.js'));
     };
 
     var checkApp = function () {

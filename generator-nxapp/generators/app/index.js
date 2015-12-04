@@ -29,7 +29,7 @@ module.exports = yeoman.generators.Base.extend({
         var self = this;
         var done = self.async();
 
-        this.log(utils.nexxSay("Hive App Generator"));
+        this.log(utils.nexxSay("Hive App Generatorrrr"));
 
         var prompts = [{
                 when: function () {
@@ -38,7 +38,7 @@ module.exports = yeoman.generators.Base.extend({
                 type: 'text',
                 name: 'appName',
                 message: 'App name',
-                default: process.cwd().split("\\").pop()
+                default: process.cwd().split("/").pop()
             }, {
                 when: function () {
                     return !self.options.install && !self.options.noinstall;
@@ -69,7 +69,7 @@ module.exports = yeoman.generators.Base.extend({
 });
 
 var getApplicationTypes = function () {
-    return ["hive-app", "blank-app"];
+    return ["new-hive-app", "hive-app", "blank-app"];
 };
 
 var checkTypeOptions = function (typeOption) {

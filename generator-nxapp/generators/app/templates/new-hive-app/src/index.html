@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="hiveApp">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>AenHive</title>
+        <link href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,900,900italic,300italic,300" rel="stylesheet" type="text/css" />
+
+        <!-- MDL GOOGLE -->
+        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+        <!-- build:css(.) styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+        <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css" />
+        <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css" />
+        <!-- endbuild -->
+    </head>
+
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+                        <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
+                            <i class="material-icons">search</i>
+                        </label>
+                        <div class="mdl-textfield__expandable-holder">
+                            <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp">
+                        </div>
+                    </div>
+                    <div class="mdl-layout__header-row">
+                        <button id="menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon mdl-button--mini-fab">
+                            <i class="material-icons">settings</i>
+                        </button>
+                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-lower-right">
+                            <li class="mdl-menu__item">Item</li>
+                            <li class="mdl-menu__item">
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                                    <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
+                                    <span class="mdl-switch__label"></span>
+                                </label>
+                            </li>
+                            <li disabled class="mdl-menu__item">Item disable</li>
+                            <li class="mdl-menu__item">
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                                    <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
+                                    <span class="mdl-radio__label">Seleção</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <!-- logo AenHive topo menu sidebar -->
+                <span class="mdl-layout-title">
+                    <img src="images/logo200B.png">
+                </span>
+                <!-- area user do menu  sidebar-->
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <img src="images/user64.png" />
+                        <div class="area-user">
+                            <div class="user-name">Usuário
+                                <span class="text-muted f9">ADMIN</span>
+                            </div>
+                            <div class="user-email">usuario@nexxera.com</div>
+                            <div class="user-actions">
+                                <a class="m-r-5 mdl-menu--bottom-right mdl-js-button mdl-js-ripple-effect" href="">
+                                    <i class="material-icons" style="font-size: 11px;">lock</i> settings
+                                </a>
+                                &nbsp;
+                                <a class="m-r-5 mdl-menu--bottom-right mdl-js-button mdl-js-ripple-effect" href="">
+                                    <i class="material-icons" style="font-size: 11px;">exit_to_app</i> logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class=" mdl-card--border"></div> -->
+                </div>
+                <!-- Menu de navegacao principal sidebar -->
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href=""><i class="material-icons">dashboard</i>&nbsp; Dashboard</a>
+                    <a class="mdl-navigation__link" href=""><i class="material-icons">credit_card</i>&nbsp; Cartões</a>
+                    <a class="mdl-navigation__link" href=""><i class="material-icons">assignment_ind</i>&nbsp; Folha Pagamento</a>
+                    <a class="mdl-navigation__link" href=""><i class="material-icons">store</i>&nbsp; Fornecedor</a>
+                </nav>
+                <!-- Rodape da sidebar -->
+                <footer class="mdl-mini-footer ft-aenhive">
+                    <div class="mdl-mini-footer__right-section">
+                        <div class="mdl-logo">item</div>
+                        <ul class="mdl-mini-footer__link-list">
+                            <li><a href="#">item</a></li>
+                            <li>
+                                <button id="demo-menu-top-right" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect">
+                                    <i class="material-icons">contact_phone</i>
+                                </button>
+                                <ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-top-right">
+                                    <li class="mdl-menu__item"><i class="material-icons">mail</i> Mensagem</li>
+                                    <li class="mdl-menu__item"><i class="material-icons">lock</i> Segurança</li>
+                                    <li disabled class="mdl-menu__item"><i class="material-icons">headset_mic</i> desabilitada</li>
+                                    <li class="mdl-menu__item"><i class="material-icons">headset_mic</i> 48-9999-9999</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </footer>
+            </div>
+            <main class="mdl-layout__content">
+                <div class="page-content">
+                    <h3 ui-view="name"></h3>
+                    <div ui-view="content"></div>
+                </div>
+            </main>
+        </div>
+
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-ui-scroll/dist/ui-scroll.js"></script>
+        <script src="bower_components/angular-ui-scrollpoint/dist/scrollpoint.js"></script>
+        <script src="bower_components/angular-ui-event/dist/event.js"></script>
+        <script src="bower_components/angular-ui-mask/dist/mask.js"></script>
+        <script src="bower_components/angular-ui-validate/dist/validate.js"></script>
+        <script src="bower_components/angular-ui-indeterminate/dist/indeterminate.js"></script>
+        <script src="bower_components/angular-ui-uploader/dist/uploader.js"></script>
+        <script src="bower_components/angular-ui-utils/index.js"></script>
+        <script src="bower_components/angular-translate/angular-translate.js"></script>
+        <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+        <script src="bower_components/flow.js/dist/flow.js"></script>
+        <script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+        <script src="bower_components/angular-base64/angular-base64.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="bower_components/material-design-lite/material.min.js"></script>
+        <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+        <script src="bower_components/nx-angular/dist/nx-angular.min.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,src}) scripts/scripts.js -->
+        <script src="app/app.js"></script>
+        <script src="route/route.js"></script>
+        <script src="home/HomeController.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>

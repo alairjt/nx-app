@@ -157,7 +157,7 @@
     var loadFromSwagger = function (self) {
         if (typeof self.options.swagger === "string") {
             request(self.options.swagger, function (error, response, body) {
-                if (!error && response.statusCode == 200) {
+                if (!error && response.statusCode === 200) {
                     var appSwagger = JSON.parse(body);
 
                     self.servico = strUtils.camelize(appSwagger.basePath, true);

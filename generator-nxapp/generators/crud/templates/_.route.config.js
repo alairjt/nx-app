@@ -8,7 +8,11 @@
                     views: {
                         'content@': {
                             templateUrl: "<%= pathConsultaView %>",
-                            controller: "<%= nomeConsultaController%>"
+                            controller: "<%= nomeConsultaController%>",
+                            controllerAs: 'ctrl'
+                        },
+                        'name@': {
+                            template: "<%= capitalize(crudName) %>"
                         }
                     },
                     data: {
@@ -24,7 +28,11 @@
                         views: {
                             'content@': {
                                 templateUrl: "<%= pathFormularioView %>",
-                                controller: "<%= nomeFormularioController %>"
+                                controller: "<%= nomeFormularioController %>",
+                                controllerAs: 'ctrl'
+                            },
+                            'name@': {
+                                template: "Novo"
                             }
                         },
                         data: {
@@ -39,7 +47,11 @@
                         views: {
                             'content@': {
                                 templateUrl: "<%= pathFormularioView %>",
-                                controller: "<%= nomeFormularioController %>"
+                                controller: "<%= nomeFormularioController %>",
+                                controllerAs: 'ctrl'
+                            },
+                            'name@': {
+                                template: "Editar"
                             }
                         },
                         data: {

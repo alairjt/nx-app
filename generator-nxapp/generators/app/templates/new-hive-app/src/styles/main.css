@@ -1,0 +1,117 @@
+.mdl-layout-title {
+    background-color: #4D5061;
+}
+.mdl-layout-title img {
+    width: 140px;
+    height: 100%;
+}
+.mdl-layout__drawer {
+    background-color: #4D5061;
+    color: #FFF;
+    border-right: 4px solid #60B078;
+}
+.mdl-layout__header {
+    background-color: #FFF;
+    color: #333;
+}
+.mdl-navigation__link {
+    color: #FFF !important;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1em;
+}
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
+    background-color: #60B078;
+}
+.valign-icon {
+    vertical-align: bottom;
+    margin-right: 5px;
+}
+.m-auto {
+    margin: auto;
+}
+.ft-aenhive {
+    width: 100%;
+    height: 30px;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    background-color: #4D5061;
+}
+.ft-content-aenhive {
+    background-color: transparent;
+}
+.mdl-button {
+    background-color: #CCC;
+}
+.mdl-menu {
+    background-color: transparent;
+}
+.mdl-layout__header .mdl-layout__drawer-button {
+    color: rgb(12, 12, 12);
+    background-color: #CCC;
+    padding: auto;
+}
+.page-content {
+    padding: 16px;
+}
+.mdl-cell {
+    background-color: #BDBDBD;
+    height: 180px;
+}
+.mdl-cell--1-col {
+    height: 50px;
+}
+
+/*area usuario sidebar*/
+.mdl-card {
+    min-height: 50px;
+}
+.demo-card-square.mdl-card {
+    width: 100%;
+    height: 96px;
+    border-radius: 0px;
+}
+.demo-card-square > .mdl-card__title {
+    color: #fff;
+    background: url('../images/bg-user.png') top left no-repeat #30323c;
+}
+
+/*text do campo user sidebar*/
+.mdl-card__title-text {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+.area-user {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 10px;
+}
+.user-name {
+    font-size: 16px;
+    line-height: 18px;
+}
+.user-email {
+    font-size: 11px;
+    color: #999;
+    line-height: 15px;
+    color: #FFF;
+}
+.user-actions {
+    margin-top: 7px;
+    font-size: 12px;
+}
+.f9 {
+    font-size: 9px;
+}
+.text-muted {
+    color: #0cf0f7;
+}
+.user-actions >a {
+    color: #0cf0f7;
+    text-decoration: none;
+    padding-left: 2;
+}
+.material-icons {
+    vertical-align: middle;
+}

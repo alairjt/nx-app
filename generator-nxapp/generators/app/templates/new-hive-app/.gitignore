@@ -1,0 +1,8 @@
+/node_modules
+/dist
+/.tmp
+/.sass-cache
+/bower_components
+/nbproject/
+/PhantomJS_1.9.8_(Linux_0.0.0)/
+/qa/
