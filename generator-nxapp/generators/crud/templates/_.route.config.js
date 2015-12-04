@@ -23,7 +23,7 @@
                 })
                 <% if (showFormulario) { %>
                     .state('home.<%= menu.toLowerCase() %>.<%= crudName.toLowerCase() %>.novo', {
-                        url: "novo",
+                        url: "/novo",
                         transition: "home.<%= menu.toLowerCase() %>.<%= crudName.toLowerCase() %>",
                         views: {
                             'content@': {
@@ -42,7 +42,7 @@
                         }
                     })
                     .state('home.<%= menu.toLowerCase() %>.<%= crudName.toLowerCase() %>.editar', {
-                        url: "editar/:id",
+                        url: "/editar/:id",
                         transition: "home.<%= menu.toLowerCase() %>.<%= crudName.toLowerCase() %>",
                         views: {
                             'content@': {
