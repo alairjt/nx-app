@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('hiveApp')
+    angular.module('nxApp')
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/');
             $stateProvider

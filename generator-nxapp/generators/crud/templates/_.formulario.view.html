@@ -1,92 +1,41 @@
-<div layout="row" layout-align="center center" ng-cloak>
-    <form name="<%= crudName.toLowerCase() %>Formulario" novalidate style="padding:40px; margin: auto 0;">
-        <div layout="row" layout-wrap>
-            <% ld.forEach(fields, function (field) { %>
-            <% if (ld.contains(field.telas, "formulario")) { %>
-            <div flex="45">
-                <nx-display-validation input="<%= crudName.toLowerCase() %>Formulario.<%= field.nome %>" label="<%= field.label %>"
-                                          obrigatorio="true">
-                    <%= obterInputPorTipo(crudName, field) %>
-                    </nx-display-validation>
-            </div>
-            <span flex="10"></span>
-            <% } %>
-            <% }) %>
-        </div>
-        <md-button type="button" class="md-button md-primary md-raised md-hue-1 md-button md-grey-theme md-ink-ripple" ng-disabled="<%= crudName.toLowerCase() %>Formulario.$invalid" ng-click="ctrl.gotoResume()" aria-label="Continuar">
-            <md-icon class="material-icons">&#xE876;</md-icon> Continuar
-        </md-button>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel">
-                    <md-button id="btnLimpar<%= crudName.toLowerCase() %>" ng-disabled="mostrarBotaoLimpar"  class="md-button md-primary md-raised md-hue-1 md-button md-grey-theme md-ink-ripple" 
-                               ng-click="cancelar();"><md-icon class="material-icons">&#xE876;</md-icon> <span class="hidden-xs">{{"Limpar"| translate}}</span>
+<div flex layout="row" layout-padding="" layout-align="center center">
+    <div flex-sm="100" flex-gt-sm="90" flex-gt-md="70" flex-gt-lg="50">
+        <md-subheader class="md-no-sticky">
+            <h1 class="vertical-center"><md-icon class="material-icons">&#xE0D0;</md-icon> Contato</h1>
+        </md-subheader>
+        <md-content id="formContent" class="md-padding">
+            <form name="<%= crudName.toLowerCase() %>Formulario" novalidate>
+                <div flex-sm="100" flex-gt-sm="80" layout-sm="column">
+                    <% ld.forEach(fields, function (field) { %>
+                        <% if (ld.contains(field.telas, "formulario")) { %>
+                        <div class="col-sm-6">
+                            <nx-display-validation input="<%= crudName.toLowerCase() %>Formulario.<%= field.nome %>" label="<%= field.label %>"
+                                                   obrigatorio="true">
+                                <%= obterInputPorTipo(crudName, field) %>
+                            </nx-display-validation>
+                        </div>
+                        <% } %>
+                    <% }) %>
+                </div>
+
+                <br>
+
+                <nav class="mdl-layout__header-row"">
+                    <md-button id="btnLimpar<%= crudName.toLowerCase() %>" ng-disabled="mostrarBotaoLimpar" class="mdl-button mdl-js-button mdl-button--raised"
+                               ng-click="cancelar();"><i class="glyphicon glyphicon-file"></i> <span class="hidden-xs">{{"Limpar"| translate}}</span>
                     </md-button>
-                    <div class="pull-right">
-                        <md-button id="btnCancelar<%= capitalize(crudName) %>" type="button" class="btn btn-default" data-toggle="modal"
-                                   data-target="#dialogCancelamento"><md-icon class="material-icons">&#xE876;</md-icon> <span class="hidden-xs">{{"Cancelar"| translate}}</span>
-                        </md-button>
-                        <md-button id="btnSalvar<%= capitalize(crudName) %>" class="btn btn-success" ng-click="salvar( <%= crudName.toLowerCase() %> Selecionado)"
-                                   ng-disabled="<%= crudName.toLowerCase() %> Formulario.$invalid"><md-icon class="material-icons">&#xE876;</md-icon>
-                            <span class="hidden-xs">{{"Salvar"| translate}}</span>
-                        </md-button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
+
+                    <div class="mdl-layout-spacer"></div>
+
+                    <md-button id="btnCancelar<%=capitalize(crudName)%>" type="button" class="btn btn-default" data-toggle="modal"
+                               data-target="#dialogCancelamento"><i class="glyphicon glyphicon-remove"></i> <span class="hidden-xs">{{"Cancelar"| translate}}</span>
+                    </md-button>
+                    <md-button id="btnSalvar<%=capitalize(crudName)%>" class="btn btn-success" ng-click="salvar(<%= crudName.toLowerCase() %>Selecionado)"
+                               ng-disabled="<%= crudName.toLowerCase() %>Formulario.$invalid"><i class="glyphicon glyphicon-ok"></i>
+                        <span class="hidden-xs">{{"Salvar"| translate}}</span>
+                    </md-button>
+                </nav>
+            </form>
+        </md-content>
+    </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<form name="<%= crudName.toLowerCase() %>Formulario" novalidate>
-    <div class="row">
-        <% ld.forEach(fields, function (field) { %>
-        <% if (ld.contains(field.telas, "formulario")) { %>
-        <div class="col-sm-6">
-            <nx-display-validation input="<%= crudName.toLowerCase() %>Formulario.<%= field.nome %>" label="<%= field.label %>"
-                                   obrigatorio="true">
-                <%= obterInputPorTipo(crudName, field) %>
-            </nx-display-validation>
-        </div>
-        <% } %>
-        <% }) %>
-    </div>
-
-    <br>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel">
-                <button id="btnLimpar<%= crudName.toLowerCase() %>" ng-disabled="mostrarBotaoLimpar" class="btn btn-default"
-                        ng-click="cancelar();"><i class="glyphicon glyphicon-file"></i> <span class="hidden-xs">{{"Limpar"| translate}}</span>
-                </button>
-                <div class="pull-right">
-                    <button id="btnCancelar<%=capitalize(crudName)%>" type="button" class="btn btn-default" data-toggle="modal"
-                            data-target="#dialogCancelamento"><i class="glyphicon glyphicon-remove"></i> <span class="hidden-xs">{{"Cancelar"| translate}}</span>
-                    </button>
-                    <button id="btnSalvar<%=capitalize(crudName)%>" class="btn btn-success" ng-click="salvar( < %= crudName.toLowerCase() % > Selecionado)"
-                            ng-disabled="< %= crudName.toLowerCase() % > Formulario.$invalid"><i class="glyphicon glyphicon-ok"></i>
-                        <span class="hidden-xs">{{"Salvar"| translate}}</span></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>

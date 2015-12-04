@@ -6,7 +6,7 @@ describe('[Controller] Consulta<%= capitalize(crudName) %>Controller.js', functi
     var retorno = [{id: 1, descricao: 'descricao1'}, {id: 2, descricao: 'descricao2'}];
 
     beforeEach(function () {
-        module('hiveApp', 'nxTemplatesTest', 'testMockRun');
+        module('nxApp');
         
         inject(function ($injector) {
             $httpBackend = $injector.get('$httpBackend');

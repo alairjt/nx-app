@@ -26,5 +26,5 @@
     "angular-mocks": "^1.4.0"
   },
   "appPath": "src",
-  "moduleName": "hiveApp"
+  "moduleName": "nxApp"
 }

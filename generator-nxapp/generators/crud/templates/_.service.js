@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    app.factory('<%= capitalize(crudName) %>Service', ['<%= capitalize(crudName) %>', function (<%= capitalize(crudName) %>) {
+    angular.module('nxApp').factory('<%= capitalize(crudName) %>Service', ['<%= capitalize(crudName) %>', function (<%= capitalize(crudName) %>) {
         var buscar = <%= capitalize(crudName) %>.query;
 
         var salvar = function (<%= crudName.toLowerCase() %>, id, cbSuccess, cbError) {

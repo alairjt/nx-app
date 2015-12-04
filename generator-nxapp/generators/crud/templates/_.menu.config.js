@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    app.config(['$stateProvider', function ($stateProvider) {
+    angular.module('nxApp').config(['$stateProvider', function ($stateProvider) {
             $stateProvider
                     .state('home.<%= menu.toLowerCase() %>', {
                         data: {

@@ -5,11 +5,11 @@
         wiring = require('html-wiring');
 
     var getBaseDir = function () {
-        return process.cwd().split("/").pop() === "app" ? "" : "app/";
+        return process.cwd().split("/").pop() === "src" ? "" : "src/";
     };
 
     var appExists = function () {
-        return fs.existsSync(getBaseDir().concat('scripts/app.js'));
+        return fs.existsSync(getBaseDir().concat('app/app.js'));
     };
 
     var checkApp = function () {
@@ -20,7 +20,7 @@
 
     var adicionarScriptAoIndex = function (path) {
         var script = '\t<script src="'.concat(path).concat('"></script>\r\n');
-        wiring.appendToFile(getBaseDir().concat('index.html'), 'html', script);
+        wiring.appendToFile(getBaseDir().concat('index.html'), 'body', script);
     };
 
     module.exports = {

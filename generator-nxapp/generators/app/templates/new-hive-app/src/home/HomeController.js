@@ -3,12 +3,12 @@
 
     /**
      * @ngdoc function
-     * @name hiveApp.home:HomeController
+     * @name nxApp.home:HomeController
      * @description
      * # HomeCtrl
-     * Controller of the hiveApp
+     * Controller of the nxApp
      */
-    angular.module('hiveApp')
+    angular.module('nxApp')
             .controller('HomeController', HomeController);
 
     HomeController.$inject = [];

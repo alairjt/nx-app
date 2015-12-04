@@ -2,17 +2,18 @@
 
 /**
  * @ngdoc overview
- * @name hiveApp
+ * @name nxApp
  * @description
- * # hiveApp
+ * # nxApp
  *
  * Main module of the application.
  */
 angular
-	.module('hiveApp', [
+	.module('nxApp', [
 		'ngAnimate',
 		'ngCookies',
 		'ngResource',
+                'ngMessages',
 		'ngRoute',
 		'ngTouch',
                 'ngMaterial',

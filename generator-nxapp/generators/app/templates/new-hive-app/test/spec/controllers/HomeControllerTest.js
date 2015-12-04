@@ -3,7 +3,7 @@
 describe('Controller: HomeController', function() {
 
 	// load the controller's module
-	beforeEach(module('hiveApp'));
+	beforeEach(module('nxApp'));
 
 	var HomeController,
 		scope;
