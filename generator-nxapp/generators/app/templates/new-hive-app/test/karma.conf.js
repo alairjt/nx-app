@@ -59,8 +59,7 @@ module.exports = function (config) {
             "test/spec/**/*.js"
         ],
         // list of files / patterns to exclude
-        exclude: [
-        ],
+        exclude: [],
         // web server port
         port: 8080,
         // Start these browsers, currently available:
@@ -106,9 +105,9 @@ module.exports = function (config) {
                 console.log(filepath.substring(filepath.indexOf('src/')).replace('src/', ''));
                 return filepath.substring(filepath.indexOf('src/')).replace('src/', '');
             },
-            moduleName: "nxTemplatesTest"
+            moduleName: "nxTemplatesTest",
             'src/**/*.js': ['coverage']
-         },
+        },
         // optionally, configure the reporter
         junitReporter: {
             outputDir: 'qa',
@@ -116,11 +115,16 @@ module.exports = function (config) {
             useBrowserName: false
         },
         coverageReporter: {
-            reporters: [
-                {type: 'html', dir: 'qa/coverage'},
-                {type: 'text-summary', dir: 'qa/coverage'},
-                {type: 'cobertura', dir: 'qa/coverage'}
-            ]
+            reporters: [{
+                type: 'html',
+                dir: 'qa/coverage'
+            }, {
+                type: 'text-summary',
+                dir: 'qa/coverage'
+            }, {
+                type: 'cobertura',
+                dir: 'qa/coverage'
+            }]
         }
     });
 };
