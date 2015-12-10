@@ -20,7 +20,9 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             // bower:js
+            'bower_components/jquery/dist/jquery.js',
             'bower_components/angular/angular.js',
+            'bower_components/oclazyload/dist/ocLazyLoad.js',
             'bower_components/angular-animate/angular-animate.js',
             'bower_components/angular-cookies/angular-cookies.js',
             'bower_components/angular-resource/angular-resource.js',
@@ -105,7 +107,8 @@ module.exports = function (config) {
                 return filepath.substring(filepath.indexOf('src/')).replace('src/', '');
             },
             moduleName: "nxTemplatesTest"
-        },
+            'src/**/*.js': ['coverage']
+         },
         // optionally, configure the reporter
         junitReporter: {
             outputDir: 'qa',

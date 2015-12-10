@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     /**
@@ -9,11 +9,10 @@
      * Controller of the nxApp
      */
     angular.module('nxApp')
-        .controller('HomeController', HomeController);
+
+    .controller('HomeController', HomeController);
 
     HomeController.$inject = [];
 
-    function HomeController() {
-
-    }
+    function HomeController() {}
 })();
