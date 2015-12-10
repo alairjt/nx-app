@@ -1,58 +1,73 @@
-(function (){
+(function() {
     'use strict';
 
-    angular.module('nxApp').controller('Formulario<%= capitalize(crudName) %>Controller', Formulario<%= capitalize(crudName) %>Controller);
-    
-    Formulario<%= capitalize(crudName) %>Controller.$inject = ['$scope', '$stateParams', '<%= capitalize(crudName) %>Service', '$base64',
-        <%  ld.forEach(fields, function (field) {
-                if (field.tipo === "Combobox") { %>
-                    <%  if (field.comboboxDataFromService) { %>
-                            '<%= field.comboboxService%>',
-                    <%  } %>
-        <%      }
-            }) 
-        %>];
+    angular.module('nxApp').controller('<%= capitalize(crudName) %>FormController', <%= capitalize(crudName) %>FormController);
 
-    function Formulario<%= capitalize(crudName) %>Controller($scope, $stateParams, <%= capitalize(crudName) %>Service, $base64
-        <%  ld.forEach(fields, function (field) {
-                if (field.tipo === "Combobox") { %>
-                    <%  if (field.comboboxDataFromService) { %>
-                            , <%= field.comboboxService%>
-                    <%  } %>
-        <%      }
-            }) 
-        %>
-        ) {
+    function <%= capitalize(crudName) %>FormController($scope, $stateParams, <%= capitalize(crudName) %>Service, $state, nxToast
+                <%  if (hasImageField) { %>
+                    , $base64
+                <%  } %>
+                <%  ld.forEach(fields, function (field) {
+                        if (field.tipo === "Combobox") { %>
+                            <%  if (field.comboboxDataFromService) { %>
+                                    , <%= field.comboboxService%>
+                            <%  } %>
+                <%      }
+                    }) 
+                %>
+            ) {
+        var vm = this;
         var id<%= capitalize(crudName) %> = $stateParams.id;
 
-        $scope.mostrarBotaoLimpar = <%= capitalize(crudName) %>Service.emEdicao(id<%= capitalize(crudName) %>);
-        $scope.<%= crudName.toLowerCase() %>Selecionado = <%= capitalize(crudName) %>Service.buscarParaEdicao(id<%= capitalize(crudName) %>) || {};
+        vm.showButtonClear = <%= capitalize(crudName) %>Service.hasId(id<%= capitalize(crudName) %>);
+        vm.<%=crudName.toLowerCase()%> = <%= capitalize(crudName) %>Service.findById(id<%= capitalize(crudName) %>) || {};
 
-        $scope.salvar = function (<%= crudName %>) {
-                return <%= capitalize(crudName) %>Service.salvar(<%= crudName %>, id<%= capitalize(crudName) %>);
+        vm.save = function(crud) {
+            return <%= capitalize(crudName) %>Service.save(crud, id<%= capitalize(crudName) %>, function() {
+                vm.showToastSave();
+            });
         };
 
-        $scope.cancelar = function () {
-            $scope.<%= crudName.toLowerCase() %>Selecionado = {};
-            $scope.<%= crudName.toLowerCase() %>Formulario.$setPristine(true);
+        vm.showToastSave = function() {
+            nxToast.show('Salvo com sucesso').then(
+                function() {
+                    $state.go($state.current.transition || $state.current.name);
+                }
+            );
+        };
+
+        vm.cancel = function() {
+            $state.go($state.current.transition);
+        };
+
+        vm.clear = function() {
+            vm.<%=crudName.toLowerCase()%> = {};
+            $scope.<%=crudName.toLowerCase()%>Form.$setPristine(true);
+            $scope.<%=crudName.toLowerCase()%>Form.$setUntouched(true);
         };
 
         <%  if (hasImageField) { %>
-                $scope.fileChanged = function (element, field) {
-                    <%= capitalize(crudName) %>Service.fileChanged(element, function (image, e) {
-                        $scope.<%= crudName.toLowerCase() %>Selecionado.nomeImagem = image.name;
-                        $scope.<%= crudName.toLowerCase() %>Selecionado[field] = $base64.encode(e.target.result);
+            //@TODO: Componentizar
+            vm.fileChanged = function(element) {
+                if (element.files[0]) {
+                    var image = element.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        vm.<%=crudName.toLowerCase()%>.logo_name = image.name;
+                        vm.<%=crudName.toLowerCase()%>.logo = $base64.encode(e.target.result);
                         $scope.$apply();
-                    });
-                };
-        <%  } %>    
-
+                    };
+                    reader.readAsBinaryString(image);
+                }
+            };
+        <%  } %>
+    
         <%  ld.forEach(fields, function (field) {
                 if (field.tipo === "Combobox") { %>
                     <%  if (!field.comboboxDataFromService) { %>
-                            $scope.lista<%= capitalize(field.nome)%> = <%= field.comboboxData%>;
+                            vm.list<%= capitalize(field.nome)%> = <%= field.comboboxData%>;
                     <%  } else { %>
-                            $scope.lista<%= capitalize(field.nome)%> = <%= field.comboboxService%>.query();
+                            vm.list<%= capitalize(field.nome)%> = <%= field.comboboxService%>.query();
                     <%  } %>
         <%      }
             }) 

@@ -95,10 +95,12 @@
             }
 
             var gerarTemplatesCrud = function (crudName, tipoController) {
-                var nomeController = self.capitalize(tipoController).concat(self.capitalize(crudName)).concat('Controller');
+                var controllerType = tipoController === 'consulta' ? '' :  'Form';
+                var viewType = tipoController === 'consulta' ? '' :  '-form';
+                var nomeController = self.capitalize(crudName).concat(controllerType).concat('Controller');
                 var pathController = crudName.toLowerCase().concat('/').concat(nomeController).concat('.js');
                 var pathControllerTest = '../test/spec/'.concat(crudName.toLowerCase()).concat('/').concat(nomeController).concat('Test.js');
-                var pathView = crudName.toLowerCase().concat('/').concat(tipoController.toLowerCase()).concat(self.capitalize(crudName)).concat('.html');
+                var pathView = crudName.toLowerCase().concat('/').concat(crudName.toLowerCase()).concat(viewType).concat('.tpl.html');
 
                 if (self.attrs.tipoVisualizacao === 'Simple') {
                     self.template('_.'.concat(tipoController).concat('.view.html'), genUtils.getBaseDir() + pathView);

@@ -1,60 +1,67 @@
 <div>
-    <div class="panel-body">
-        <div class="table-responsive">
-            <div class="row">
-                <div class="col-lg-12">
-                    <label class="control-label">{{"Buscar"| translate}}:</label>
-                    <input id="inputPesquisar<%=capitalize(crudName)%>" nx-focus="true" type="text" class="form-control"
-                           placeholder="" ng-model="criterio">
-                </div>
-            </div>
-            <br/>
+    <div>
+        <md-data-table-toolbar>
+            <h2 class="md-title">{{'<%= capitalize(crudName) %>'| translate}}</h2>
+            <div flex></div>
             <% if (showFormulario) { %>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="panel">
-                            <div class="input-group">
-                                <button id="btnNovo<%=capitalize(crudName)%>" ng-click="cancelarRegistro()" ui-sref="home.<%=menu.toLowerCase()%>.<%=crudName.toLowerCase()%>.novo" class="btn btn-success navbar-right" type="button"><span class="glyphicon glyphicon-plus"></span> <span class="hidden-xs">{{"Novo"| translate}}</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br/>
+                <md-button class="md-icon-button" ng-click="vm.add<%= capitalize(crudName) %>()">
+                    <md-icon>add</md-icon>
+                    <md-tooltip>
+                        {{'Novo'| translate}}
+                    </md-tooltip>
+                </md-button>
             <% } %>
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-condensed noCursor" ng-show="filtered.length > 0">
-                        <tr>
-                            <% ld.forEach(fields, function (field) { %>
-                                <% if (ld.contains(field.telas, "consulta")) { %>
-                                    <th class="text-center col-lg-2"><a href="" ng-click="ordenarCamposPor('<%=field.nome%>')">{{"<%=field.label%>"| translate}}</a></th>
-                                <% } %>
-                            <% }) %>
-                            <% if (showFormulario) { %>
-                                <th class="text-center col-lg-1">{{"Editar"| translate}}</th>
+            <!-- @TODO: Futuramente será adicionado a geração dos filtros avançados
+            <md-button class="md-icon-button" ng-click="vm.showFilter($event)">
+                <md-icon>filter_list</md-icon>
+                <md-tooltip>
+                    {{'Filtrar'| translate}}
+                </md-tooltip>
+            </md-button>
+            -->
+        </md-data-table-toolbar>
+        <md-data-table-toolbar>
+            <md-input-container class="md-icon-float md-block" flex>
+                <label>{{'Buscar'|translate}}</label>
+                <md-icon class="material-icons">search</md-icon>
+                <input name="searchFilter" id="searchFilter" type="text" ng-model="vm.searchFilter" ng-change="vm.filter(vm.searchFilter)"/>
+            </md-input-container>
+        </md-data-table-toolbar>
+        <md-data-table-container ng-show="vm.filtered.length > 0"> 
+            <table md-data-table class="md-primary" md-progress="vm.deferred">
+                <thead md-order="vm.config.query.order">
+                    <tr>
+                        <% ld.forEach(fields, function (field) { %>
+                            <% if (ld.contains(field.telas, "consulta")) { %>
+                                <th order-by="<%=field.nome%>" name="{{'<%=field.label%>'| translate}}"></th>
                             <% } %>
-                        </tr>
-                        <tr dir-paginate="<%=crudName.toLowerCase()%> in filtered | orderBy:campoOrderBy:reverse | itemsPerPage: pageSize" current-page="currentPage">
-                            <% ld.forEach(fields, function (field) { %>
-                                <% if (ld.contains(field.telas, "consulta")) { %>
-                                    <td class="text-center col-lg-2">{{<%=getDisplayField(crudName, field)%>}}</td>
-                                <% } %>
-                            <% }) %>
-                            <% if (showFormulario) { %>
-                                <td class="text-center col-lg-1">
-                                    <a id="linkEditarBanco" href="" ui-sref="home.<%=menu.toLowerCase()%>.<%=crudName.toLowerCase()%>.editar({id: <%=crudName.toLowerCase()%>.id})" class="glyphicon glyphicon-pencil" title="{{'Editar registro' | translate}}"></a>
-                                </td>
+                        <% }) %>
+                        <% if (showFormulario) { %>
+                            <th name="{{'Ações'| translate}}"></th>
+                        <% } %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr md-auto-select ng-repeat="<%=crudName.toLowerCase()%> in vm.filtered| orderBy: vm.config.query.order | limitTo: vm.config.query.limit: (vm.config.query.page - 1) * vm.config.query.limit">
+                        <% ld.forEach(fields, function (field) { %>
+                            <% if (ld.contains(field.telas, "consulta")) { %>
+                                <td>{{<%=getDisplayField(crudName, field)%>}}</td>
                             <% } %>
-                        </tr>
-                    </table>
-                    <div class="panel" ng-show="filtered.length > 0">
-                        <strong>{{"Total busca"| translate}}: {{filtered.length}}</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="pull-right">
-            <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" ></dir-pagination-controls>
-        </div>
+                        <% }) %>
+                        <% if (showFormulario) { %>
+                            <td>
+                                <md-button class="md-icon-button" ng-click="vm.edit(<%=crudName.toLowerCase()%>.id)">
+                                    <md-icon>mode_edit</md-icon>
+                                    <md-tooltip>
+                                        {{'Editar'| translate}}
+                                    </md-tooltip>
+                                </md-button>
+                            </td>
+                        <% } %>
+                    </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+        <md-data-table-pagination md-label="vm.config.table.row_per_page" md-limit="vm.config.query.limit" md-page="vm.config.query.page" md-total="{{vm.filtered.length}}"></md-data-table-pagination>
     </div>
 </div>

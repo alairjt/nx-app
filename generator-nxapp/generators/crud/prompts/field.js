@@ -4,15 +4,15 @@
     var prompts = [{
             type: 'input',
             name: 'nome',
-            message: 'Field name'
+            message: 'Nome do campo:'
         }, {
             type: 'input',
             name: 'label',
-            message: 'Field label'
+            message: 'Label do campo:'
         }, {
             type: "list",
             name: "tipo",
-            message: "Field type",
+            message: "Tipo do campo:",
             default: "String",
             choices: [
                 "CNPJ / CPF",
@@ -30,7 +30,7 @@
             },
             type: "confirm",
             name: "comboboxDataFromService",
-            message: "Combobox data loaded from a service",
+            message: "Carregar opções de um serviço?",
             default: true
         }, {
             when: function (data) {
@@ -38,7 +38,7 @@
             },
             type: "confirm",
             name: "comboboxRecursoExistente",
-            message: "Service and resource exists in the Web apps",
+            message: "Serviço e recurso existem?",
             default: true
         }, {
             when: function (data) {
@@ -46,25 +46,25 @@
             },
             type: "input",
             name: "comboboxService",
-            message: "Service/Resource that will be created (ex.: SERVICES.banco.bancos)"
+            message: "Nome do Serviço/Recurso a ser criado (ex.: SERVICES.banco.bancos):"
         }, {
             when: function (data) {
                 return data.tipo === 'Combobox' && data.comboboxDataFromService && data.comboboxRecursoExistente;
             },
             type: "input",
             name: "comboboxService",
-            message: "Service/Resource name (ex.: Bancos)"
+            message: "Nome do Service/Resource (ex.: Bancos):"
         }, {
             when: function (data) {
                 return data.tipo === 'Combobox' && !data.comboboxDataFromService;
             },
             type: "input",
             name: "comboboxData",
-            message: "Combobox data (ex.: Chave1:Valor1;Chave2:Valor2)"
+            message: "Dados da Combobox (ex.: Chave1:Valor1;Chave2:Valor2):"
         }, {
             type: "checkbox",
             name: "telas",
-            message: "Add field to pages",
+            message: "Adicionar campo às telas:",
             choices: [
                 "consulta",
                 "formulario"
@@ -72,7 +72,7 @@
         }, {
             type: 'confirm',
             name: 'adicionarOutro',
-            message: 'Add another field',
+            message: 'Adicionar outro campo?',
             default: true
         }
     ];

@@ -46,11 +46,13 @@ module.exports = function (config) {
             'bower_components/angular-material/angular-material.js',
             'bower_components/material-design-lite/material.min.js',
             'bower_components/angular-material-icons/angular-material-icons.min.js',
+            'bower_components/angular-material-data-table/dist/md-data-table.min.js',
             'bower_components/nx-angular/dist/nx-angular.min.js',
             'bower_components/angular-mocks/angular-mocks.js',
             // endbower
             "src/app/app.js",
             "src/**/*.js",
+            "src/**/*.tpl.html",
             "test/mock/**/*.js",
             "test/spec/**/*.js"
         ],
@@ -75,7 +77,8 @@ module.exports = function (config) {
             "karma-jasmine",
             "karma-coverage",
             "karma-junit-reporter",
-            "karma-phantomjs-launcher"
+            "karma-phantomjs-launcher",
+            "karma-ng-html2js-preprocessor"
         ],
         // Continuous Integration mode
         // if true, it capture browsers, run tests and exit
@@ -93,7 +96,15 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'src/**/*.js': ['coverage']
+            'src/**/*.js': ['coverage'],
+            'src/**/*.tpl.html': ['ng-html2js']
+        },
+        ngHtml2JsPreprocessor: {
+            cacheIdFromPath: function (filepath) {
+                console.log(filepath.substring(filepath.indexOf('src/')).replace('src/', ''));
+                return filepath.substring(filepath.indexOf('src/')).replace('src/', '');
+            },
+            moduleName: "nxTemplatesTest"
         },
         // optionally, configure the reporter
         junitReporter: {

@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-br" ng-app="nxApp">
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>AenHive</title>
-        <link href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,900,900italic,300italic,300" rel="stylesheet" type="text/css" />
+        <link href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,900,900italic,300italic,300" rel="stylesheet" type="text/css">
 
         <!-- MDL GOOGLE -->
-        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
 
         <!-- build:css(.) styles/vendor.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
         <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css" />
         <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css" />
+        <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css" />
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css" />
+        <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
     </head>
 
-    <body>
+    <body ng-controller="IndexController as vm">
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
@@ -67,7 +68,7 @@
                 <!-- area user do menu  sidebar-->
                 <div class="demo-card-square mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title">
-                        <img src="images/user64.png" />
+                        <img src="images/user64.png">
                         <div class="area-user">
                             <div class="user-name">Usuário
                                 <span class="text-muted f9">ADMIN</span>
@@ -88,10 +89,7 @@
                 </div>
                 <!-- Menu de navegacao principal sidebar -->
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href=""><i class="material-icons">dashboard</i>&nbsp; Dashboard</a>
-                    <a class="mdl-navigation__link" href=""><i class="material-icons">credit_card</i>&nbsp; Cartões</a>
-                    <a class="mdl-navigation__link" href=""><i class="material-icons">assignment_ind</i>&nbsp; Folha Pagamento</a>
-                    <a class="mdl-navigation__link" href=""><i class="material-icons">store</i>&nbsp; Fornecedor</a>
+                    <menu-toggle ng-repeat="section in vm.menu.sections" section="section" ng-if="section.type === 'toggle'"></menu-toggle>
                 </nav>
                 <!-- Rodape da sidebar -->
                 <footer class="mdl-mini-footer ft-aenhive">
@@ -116,7 +114,6 @@
             </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
-                    <h5 ui-view="name"></h5>
                     <div ui-view="content"></div>
                 </div>
             </main>
@@ -150,14 +147,26 @@
         <script src="bower_components/angular-material/angular-material.js"></script>
         <script src="bower_components/material-design-lite/material.min.js"></script>
         <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+        <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
         <script src="bower_components/nx-angular/dist/nx-angular.min.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:js({.tmp,src}) scripts/scripts.js -->
         <script src="app/app.js"></script>
+        <script src="IndexController.js"></script>
         <script src="route/route.js"></script>
         <script src="home/HomeController.js"></script>
+        <script src="bank/BankController.js"></script>
+        <script src="bank/BankFormController.js"></script>
+        <script src="bank/BankService.js"></script>
+        <script src="bank/Bank.js"></script>
+        <script src="bank/BankConfig.js"></script>
+        <script src="route/novoConfig.js"></script>
+
+        <script src="tmp/menu-service.js"></script>
+        <script src="tmp/menu-toggle.js"></script>
+        <script src="tmp/menu-link.js"></script>
         <!-- endbuild -->
     </body>
 </html>

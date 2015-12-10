@@ -1,6 +1,6 @@
 'use strict';
 
-describe('[Controller] <%= capitalize(crudName) %>Controller', function () {
+describe('[Controller] ConsultaCrudController.js', function () {
     var $scope, $controller, $rootScope, $httpBackend, createController;
 
     var retorno = [{'code': '237', 'name': 'Bradesco', 'logo_name': 'bradesco-logo.jpg'}];
@@ -16,7 +16,7 @@ describe('[Controller] <%= capitalize(crudName) %>Controller', function () {
             $scope = $rootScope.$new();
 
             createController = function () {
-                return $controller('<%= capitalize(crudName) %>Controller');
+                return $controller('BankController');
             };
 
             $scope.$digest();
@@ -42,7 +42,7 @@ describe('[Controller] <%= capitalize(crudName) %>Controller', function () {
         expect(ctrl.config.query.limit).toBe(10);
     });
 
-    it('Deve filtrar os <%= capitalize(crudName) %>', function () {
+    it('Deve filtrar os Bank', function () {
         //Given
         $httpBackend.expect('GET', /.*/).respond(
             retorno
@@ -58,7 +58,7 @@ describe('[Controller] <%= capitalize(crudName) %>Controller', function () {
         expect(filtered[0].name).toBe('Bradesco');
     });
 
-    it('Deve não trazer <%= capitalize(crudName) %>', function () {
+    it('Deve não trazer Bank', function () {
         //Given
         $httpBackend.expect('GET', /.*/).respond(
             retorno

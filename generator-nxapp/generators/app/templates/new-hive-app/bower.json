@@ -20,6 +20,7 @@
     "angular-material": "~0.11.4",
     "material-design-lite": "~1.0.6",
     "angular-material-icons": "~0.6.0",
+    "angular-material-data-table": "^0.8.14",
     "nx-angular": "https://gitlab.nexxera.com/plataforma-financeira-web/nx-angular.git#develop"
   },
   "devDependencies": {

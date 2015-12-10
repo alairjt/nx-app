@@ -1,6 +1,6 @@
 'use strict';
 
-describe('[Controller] <%= capitalize(crudName) %>FormController.js', function () {
+describe('[Controller] BankFormController.js', function () {
     var $scope, $stateParams, $controller, $rootScope, $httpBackend, createController;
 
     var retorno = {'code': '237', 'name': 'Bradesco', 'logo_name': 'bradesco-logo.jpg'};
@@ -14,10 +14,10 @@ describe('[Controller] <%= capitalize(crudName) %>FormController.js', function (
             $controller = $injector.get('$controller');
 
             $scope = $rootScope.$new();
-            $scope.<%= capitalize(crudName) %>Formulario = {'$setPristine': function () {}, '$setUntouched': function () {}};
+            $scope.bankFormulario = {'$setPristine': function () {}, '$setUntouched': function () {}};
 
             createController = function () {
-                return $controller('<%= capitalize(crudName) %>FormController', {
+                return $controller('BankFormController', {
                     '$scope': $scope,
                     '$stateParams': $stateParams
                 });
@@ -41,7 +41,7 @@ describe('[Controller] <%= capitalize(crudName) %>FormController.js', function (
         $httpBackend.flush();
         //When
         //Then
-        expect(ctrl.<%=crudName.toLowerCase()%>.code).toBe('237');
+        expect(ctrl.bank.code).toBe('237');
     });
 
     it('Deve trazer o formulário limpo', function () {
@@ -49,7 +49,7 @@ describe('[Controller] <%= capitalize(crudName) %>FormController.js', function (
         var ctrl = createController();
         //When
         //Then
-        expect(ctrl.<%=crudName.toLowerCase()%>.code).toBe(undefined);
+        expect(ctrl.bank.code).toBe(undefined);
     });
 
     it('Deve salvar o formulário', function () {
@@ -78,8 +78,8 @@ describe('[Controller] <%= capitalize(crudName) %>FormController.js', function (
         var ctrl = createController();
         $httpBackend.flush();
         //Then
-        expect(ctrl.<%=crudName.toLowerCase()%>.code).toBe('237');
-        expect(ctrl.<%=crudName.toLowerCase()%>.name).toBe('Bradesco');
+        expect(ctrl.bank.code).toBe('237');
+        expect(ctrl.bank.name).toBe('Bradesco');
         //When
         $httpBackend.expect('PUT', /.*/).respond(
             data
@@ -102,7 +102,7 @@ describe('[Controller] <%= capitalize(crudName) %>FormController.js', function (
         $httpBackend.flush();
         ctrl.clear();
         //Then
-        expect(ctrl.<%=crudName.toLowerCase()%>.code).toBe(undefined);
-        expect(ctrl.<%=crudName.toLowerCase()%>.name).toBe(undefined);
+        expect(ctrl.bank.code).toBe(undefined);
+        expect(ctrl.bank.name).toBe(undefined);
     });
 });

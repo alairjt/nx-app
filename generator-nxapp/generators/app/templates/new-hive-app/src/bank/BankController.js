@@ -2,15 +2,15 @@
     'use strict';
 
     angular.module('nxApp').
-    controller('<%= capitalize(crudName) %>Controller', <%= capitalize(crudName) %>Controller);
+    controller('BankController', BankController);
 
-    function <%= capitalize(crudName) %>Controller(<%= capitalize(crudName) %>Service, $state, $filter, $mdDialog) {
+    function BankController(BankService, $state, $filter, $mdDialog) {
         var vm = this;
 
         vm.config = {
             query: {
                 filter: '',
-                order: '',
+                order: 'name',
                 limit: 10,
                 page: 1
             },
@@ -24,29 +24,29 @@
 
         vm.filter = function(searchFilter) {
             vm.config.query.page = 1;
-            vm.filtered = $filter('filter')(vm.list<%= capitalize(crudName) %>, searchFilter);
+            vm.filtered = $filter('filter')(vm.listaBank, searchFilter);
             return vm.filtered;
         };
 
-        vm.add<%= capitalize(crudName) %> = function() {
-            $state.go('home.<%=menu.toLowerCase()%>.<%=crudName.toLowerCase()%>.new');
+        vm.addBank = function() {
+            $state.go('home.novo.bank.new');
         };
 
-        vm.edit = function(id<%= capitalize(crudName) %>) {
-            $state.go('home.<%=menu.toLowerCase()%>.<%=crudName.toLowerCase()%>.edit', {
-                id: id<%= capitalize(crudName) %>
+        vm.edit = function(idBank) {
+            $state.go('home.novo.bank.edit', {
+                id: idBank
             });
         };
 
-        vm.deferred = <%= capitalize(crudName) %>Service.query(function(data) {
-            vm.list<%= capitalize(crudName) %> = vm.filtered = data;
+        vm.deferred = BankService.query(function(data) {
+            vm.listaBank = vm.filtered = data;
         }).$promise;
 
         vm.showFilter = function(ev) {
             //@TODO: Criar diretiva para dialog filtros
             $mdDialog.show({
                 controller: FilterController,
-                templateUrl: '<%=crudName.toLowerCase()%>/dialog-filter.tpl.html',
+                templateUrl: 'bank/dialog-filter.tpl.html',
                 clickOutsideToClose: true,
                 targetEvent: ev
             }).then(

@@ -39,21 +39,21 @@
             var specsField = obterInputType(field.tipo);
             return '<input type="' + specsField.type + '" ' + specsField.mask + ' class="form-control"' +
                     ' id="' + field.nome + '" name="' + field.nome + '"' +
-                    ' ng-model="' + crudName.toLowerCase() + 'Selecionado.' + field.nome + '"' +
+                    ' ng-model="vm.' + crudName.toLowerCase() + '.' + field.nome + '"' +
                     ' ng-required="true"/>';
         };
 
         var criarInputImagem = function (crudName, field) {
-            return '<input ng-model="image" value="' + crudName.toLowerCase() + 'Selecionado.' + field.nome + '" onchange="angular.element(this).scope().fileChanged(this, \'' + field.nome + '\');" type="file" accept="image/*" />';
+            return '<input ng-model="vm.image" value="' + crudName.toLowerCase() + '.' + field.nome + '" onchange="angular.element(this).scope().fileChanged(this, \'' + field.nome + '\');" type="file" accept="image/*" />';
         };
 
         var criarInputDate = function (crudName, field) {
-            return '<calendar label="Data" model="' + crudName.toLowerCase() + 'Selecionado.' + field.nome + '" format="dd/MM/yyyy"></calendar>';
+            return '<calendar label="Data" model="vm.' + crudName.toLowerCase() + '.' + field.nome + '" format="dd/MM/yyyy"></calendar>';
         };
 
         var criarInputCombobox = function (crudName, field) {
-            return '<select class="form-control" name="' + field.nome + '" ng-model="' + crudName.toLowerCase() + 'Selecionado.' + field.nome + '" id="' + field.nome + '"' +
-                    'ng-options="data as data.nome for data in lista' + strUtils.capitalize(field.nome) + '" ng-required="true">' +
+            return '<select class="form-control" name="' + field.nome + '" ng-model="vm.' + crudName.toLowerCase() + field.nome + '" id="' + field.nome + '"' +
+                    'ng-options="data as data.nome for data in vm.list' + strUtils.capitalize(field.nome) + '" ng-required="true">' +
                     '</select>';
         };
 

@@ -5,20 +5,20 @@
         return [{
                 type: "input",
                 name: 'crudName',
-                message: 'CRUD name'
+                message: 'Nome do crud:'
             }, {
                 type: "input",
                 name: "menu",
-                message: "Add to the menu"
+                message: "Adicionar ao menu:"
             }, {
                 type: "confirm",
                 name: "createMenu",
-                message: "Create menu",
+                message: "Criar menu?",
                 default: false
             }, {
                 type: "list",
                 name: "tipoVisualizacao",
-                message: "Search type",
+                message: "Tipo da consulta:",
                 choices: [
                     'Simple',
                     'Grouped'
@@ -30,35 +30,35 @@
                 },
                 type: "input",
                 name: "campoGrupo",
-                message: "Field name that will be grouped"
+                message: "Nome do campo a ser agrupado:"
             }, {
                 when: function (response) {
                     return response.tipoVisualizacao === 'Grouped';
                 },
                 type: "input",
                 name: "campoGrupoDetalhes",
-                message: "Field name of the details"
+                message: "Nome do campo de detalhes:"
             }, {
                 when: function (response) {
                     return response.tipoVisualizacao === 'Grouped';
                 },
                 type: "input",
                 name: "campoGrupoTotal",
-                message: "Field name of totals"
+                message: "Nome do campo de totais:"
             }, {
                 when: function () {
                     return !parent.servico;
                 },
                 type: "input",
                 name: "servico",
-                message: "Service name"
+                message: "Nome do serviço:"
             }, {
                 when: function (response) {
                     return !response.novoRecurso && !parent.path;
                 },
                 type: "input",
                 name: "recurso",
-                message: "Resource name"
+                message: "Nome do recurso:"
             }];
     };
 

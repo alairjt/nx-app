@@ -1,0 +1,53 @@
+<div>
+    <div>
+        <md-data-table-toolbar>
+            <h2 class="md-title">{{'Bancos'| translate}}</h2>
+            <div flex></div>
+            <md-button class="md-icon-button" ng-click="vm.addBank()">
+                <md-icon>add</md-icon>
+                <md-tooltip>
+                    {{'Novo'| translate}}
+                </md-tooltip>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="vm.showFilter($event)">
+                <md-icon>filter_list</md-icon>
+                <md-tooltip>
+                    {{'Filtrar'| translate}}
+                </md-tooltip>
+            </md-button>
+        </md-data-table-toolbar>
+        <md-data-table-toolbar>
+            <md-input-container class="md-icon-float md-block" flex>
+                <label>{{'Buscar'|translate}}</label>
+                <md-icon class="material-icons">search</md-icon>
+                <input name="nome" id="nome" type="text" ng-model="vm.searchFilter" ng-change="vm.filter(vm.searchFilter)"/>
+            </md-input-container>
+        </md-data-table-toolbar>
+        <md-data-table-container ng-show="vm.filtered.length > 0"> 
+            <table md-data-table class="md-primary" md-progress="vm.deferred">
+                <thead md-order="vm.config.query.order">
+                    <tr>
+                        <th order-by="code" name="{{'Código'| translate}}"></th>
+                        <th order-by="name" name="{{'Nome'| translate}}"></th>
+                        <th name="{{'Ações'| translate}}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr md-auto-select ng-repeat="bank in vm.filtered| orderBy: vm.config.query.order | limitTo: vm.config.query.limit: (vm.config.query.page - 1) * vm.config.query.limit">
+                        <td>{{bank.code}}</td>
+                        <td>{{bank.name}}</td>
+                        <td>
+                            <md-button class="md-icon-button" ng-click="vm.edit(bank.code)">
+                                <md-icon>mode_edit</md-icon>
+                                <md-tooltip>
+                                    {{'Editar'| translate}}
+                                </md-tooltip>
+                            </md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+        <md-data-table-pagination md-label="vm.config.table.row_per_page" md-limit="vm.config.query.limit" md-page="vm.config.query.page" md-total="{{vm.filtered.length}}"></md-data-table-pagination>
+    </div>
+</div>

@@ -2,19 +2,21 @@
     <md-content id="formContent" class="md-padding">
         <div class="md-toolbar-tools">
             <h2>
-                <span>{{"<%= capitalize(crudName) %>"| translate}}</span>
+                <span>{{"Banco"| translate}}</span>
             </h2>
         </div>
-        <form name="<%=crudName.toLowerCase()%>Form" novalidate>
+        <form name="bankFormulario" novalidate>
             <div flex-sm="100" flex-gt-sm="100" layout-sm="column">
-                <% ld.forEach(fields, function (field) { %>
-                    <% if (ld.contains(field.telas, "formulario")) { %>
-                        <nx-display-validation input="<%= crudName.toLowerCase()%>Form.<%= field.nome %>" label="<%= field.label %>"
-                                               obrigatorio="true">
-                            <%= obterInputPorTipo(crudName, field) %>
-                        </nx-display-validation>
-                    <% } %>
-                <% }) %>
+                <nx-display-validation input="bankFormulario.code" label="{{'Código'|translate}}" obrigatorio="true">
+                    <input type="text" id="code" name="code" ng-model="vm.bank.code" ng-disabled='' ng-required="true"/>
+                </nx-display-validation>
+                <nx-display-validation input="bankFormulario.name" label="{{'Nome'|translate}}" obrigatorio="true">
+                    <input type="text" id="name" name="name" ng-model="vm.bank.name" ng-required="true"/>
+                </nx-display-validation>
+                <nx-display-validation input="bankFormulario.logo" label="{{'Logo'|translate}}" obrigatorio="true">
+                    <input id="logo" name="logo" placeholder="{{'Logo'|translate}}" ng-model="image" onchange="angular.element(this).scope().vm.fileChanged(this)" type="file" accept="image/*"/>
+                </nx-display-validation>
+                <img alt="{{vm.bank.name}}" ng-src="data:image/jpeg;base64,{{vm.bank.logo}}" />
             </div>
 
             <br>
@@ -39,8 +41,8 @@
                     <span>{{'Cancelar'| translate}}</span>
                 </md-button>
 
-                <md-button type="button" id="btnSalvarCrud" class="md-button md-primary md-raised md-hue-1" ng-click="vm.save(vm.<%= crudName.toLowerCase()%>)"
-                           ng-disabled="<%= crudName.toLowerCase()%>Form.$invalid">
+                <md-button type="button" id="btnSalvarCrud" class="md-button md-primary md-raised md-hue-1" ng-click="vm.save(vm.bank)"
+                           ng-disabled="bankFormulario.$invalid || !vm.bank.logo">
                     <md-icon>save</md-icon>
                     <md-tooltip>
                         {{'Salvar'| translate}}
