@@ -1,7 +1,0 @@
-<div>
-    <a class="mdl-navigation__link" ng-click="toggle()">
-        <i class="material-icons">{{section.icon}}</i>&nbsp; {{section.name}}
-    </a>
-    <span aria-hidden="true" class="pull-right fa fa-chevron-down md-toggle-icon" ng-class="{'toggled' : isOpen()}"></span>
-</div>
-<menu-link ng-repeat="page in section.pages" ng-show="isOpen()" id="side-menu-{{section.name}}" section="page"></menu-link>

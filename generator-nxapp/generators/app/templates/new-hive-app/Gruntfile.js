@@ -7,7 +7,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
@@ -21,7 +21,6 @@ module.exports = function(grunt) {
 
     // Configurable paths for the application
     var appConfig = {
-        moduleName : require('./bower.json').moduleName,
         app: require('./bower.json').appPath || 'src',
         dist: 'dist'
     };
@@ -79,7 +78,7 @@ module.exports = function(grunt) {
             livereload: {
                 options: {
                     open: true,
-                    middleware: function(connect) {
+                    middleware: function (connect) {
                         return [
                             connect.static('.tmp'),
                             connect().use(
@@ -98,7 +97,7 @@ module.exports = function(grunt) {
             test: {
                 options: {
                     port: 9001,
-                    middleware: function(connect) {
+                    middleware: function (connect) {
                         return [
                             connect.static('.tmp'),
                             connect.static('test'),
@@ -163,12 +162,12 @@ module.exports = function(grunt) {
                     dot: true,
                     src: [
                         '.tmp',
-                        '<%= yeoman.dist %>',
-						'qa'
+                        '<%= yeoman.dist %>'
                     ]
                 }]
             },
-            server: '.tmp'
+            server: '.tmp',
+			qa : 'qa'
         },
 
         // Add vendor prefixed styles
@@ -338,7 +337,8 @@ module.exports = function(grunt) {
                         '*.html',
                         'images/*.{ico,png,txt}',
                         'images/{,*/}*.{webp}',
-                        'styles/fonts/{,*/}*.*'
+                        'styles/fonts/{,*/}*.*',
+                        'config.json'
                     ]
                 }, {
                     expand: true,
@@ -377,7 +377,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('serve', 'Compile then start a connect web server', function(target) {
+    grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'connect:dist:keepalive']);
         }
@@ -392,7 +392,7 @@ module.exports = function(grunt) {
         ]);
     });
 
-    grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function(target) {
+    grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
         grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
         grunt.task.run(['serve:' + target]);
     });
@@ -416,9 +416,8 @@ module.exports = function(grunt) {
         'concat',
         'ngAnnotate',
         'copy:dist',
-        //    'cdnify',
         'cssmin',
-       'uglify',
+        'uglify',
         'filerev',
         'usemin',
         'htmlmin'

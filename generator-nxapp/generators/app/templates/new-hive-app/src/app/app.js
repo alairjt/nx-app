@@ -1,6 +1,5 @@
-(function() {
+(function () {
     'use strict';
-
     /**
      * @ngdoc overview
      * @name nxApp
@@ -20,19 +19,12 @@
         'ngMdIcons',
         'ui.router',
         'base64',
-        'nx.angular',
-        'md.data.table'
+        'nx.angular'
     ])
 
-    .filter('translate', function() {
-        return function(text) {
+    .filter('translate', function () {
+        return function (text) {
             return text;
-        };
-    })
-
-    .filter('nospace', function() {
-        return function(value) {
-            return (!value) ? '' : value.replace(/ /g, '');
         };
     })
 
@@ -47,7 +39,6 @@
         ServicesRegisterProvider.init({
             apiEndPoint: 'https://{subdomain}-dev.nexxera.com/'
         });
-        ServicesRegisterProvider.add('bancoService', 'banco', 'banco');
     }
 
     ThemingConfig.$inject = ['$mdThemingProvider'];
