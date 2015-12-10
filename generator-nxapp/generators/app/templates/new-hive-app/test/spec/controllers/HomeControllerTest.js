@@ -13,7 +13,6 @@ describe('Controller: HomeController', function () {
         scope = $rootScope.$new();
         HomeController = $controller('HomeController', {
             $scope: scope
-                // place here mocked dependencies
         });
     }));
 

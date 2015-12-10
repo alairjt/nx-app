@@ -167,7 +167,7 @@ module.exports = function (grunt) {
                 }]
             },
             server: '.tmp',
-			qa : 'qa'
+            qa: 'qa'
         },
 
         // Add vendor prefixed styles

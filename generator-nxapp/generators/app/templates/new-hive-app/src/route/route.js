@@ -3,7 +3,11 @@
 
     angular.module('nxApp')
 
-    .config(['$stateProvider', '$urlRouterProvider', 'ModuleLoaderProvider', function ($stateProvider, $urlRouterProvider, ModuleLoaderProvider) {
+    .config(Route);
+
+    Route.$inject = ['$stateProvider', '$urlRouterProvider', 'ModuleLoaderProvider'];
+
+    function Route($stateProvider, $urlRouterProvider, ModuleLoaderProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider.state('home', {
             url: '/',
@@ -27,5 +31,6 @@
         });
 
         ModuleLoaderProvider.init(['config.json']);
-    }]);
+    }
+
 })();
