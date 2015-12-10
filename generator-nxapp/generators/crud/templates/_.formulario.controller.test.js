@@ -14,7 +14,7 @@ describe('[Controller] <%= capitalize(crudName) %>FormController.js', function (
             $controller = $injector.get('$controller');
 
             $scope = $rootScope.$new();
-            $scope.<%= capitalize(crudName) %>Formulario = {'$setPristine': function () {}, '$setUntouched': function () {}};
+            $scope.<%=crudName.toLowerCase()%>Form = {'$setPristine': function () {}, '$setUntouched': function () {}};
 
             createController = function () {
                 return $controller('<%= capitalize(crudName) %>FormController', {
