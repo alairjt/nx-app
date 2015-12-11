@@ -19,6 +19,10 @@
     };
 
     var adicionarScriptAoIndex = function (path) {
+        if (!fs.existsSync(getBaseDir().concat('index.html'))) {
+            return;
+        }
+        
         var script = '\t<script src="'.concat(path).concat('"></script>\r\n');
         wiring.appendToFile(getBaseDir().concat('index.html'), 'body', script);
     };

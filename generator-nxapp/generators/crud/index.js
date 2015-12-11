@@ -24,7 +24,7 @@
 
             loadFromSwagger(self);
 
-            genUtils.checkApp();
+            //genUtils.checkApp();
         },
         prompting: function () {
             var self = this,
