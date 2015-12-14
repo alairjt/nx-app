@@ -29,11 +29,11 @@
         };
 
         vm.add<%= capitalize(crudName) %> = function() {
-            $state.go('home.<%=menu.toLowerCase()%>.<%=crudName.toLowerCase()%>.new');
+            $state.go($state.current.name.concat('.new'));
         };
 
         vm.edit = function(id<%= capitalize(crudName) %>) {
-            $state.go('home.<%=menu.toLowerCase()%>.<%=crudName.toLowerCase()%>.edit', {
+            $state.go($state.current.name.concat('.edit'), {
                 id: id<%= capitalize(crudName) %>
             });
         };
