@@ -1,0 +1,21 @@
+{
+    "name": "aprovacao-contas-a-pagar",
+    "routes": [
+        {
+            "name": "approval",
+            "displayName": "Consulta",
+            "displayMenu": true,
+            "url": "/approval",
+            "template": "approval/approval.tpl.html",
+            "controller": "ApprovalController as vm",
+            "js": "approval/app.js",
+            "operacoes": [],
+            "deps": [
+                "approval/app.js",
+                "approval/Approval.js",
+                "approval/ApprovalService.js",
+                "approval/ApprovalController.js"
+            ]
+        }
+    ]
+}

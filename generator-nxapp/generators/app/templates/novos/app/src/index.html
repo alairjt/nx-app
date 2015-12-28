@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Plataforma Financeira</title>
+        <meta name="description" content="AenHive, Nexxera, Sistema Financeiro, Financas, Conciliacao bancaria, Sistema Bancario, Folha de Pagamento, Cartoes, Negocios, empreendedor, MPE, Tributo, Tributos, Encargo, Salario" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,900,900italic,300italic,300" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
+        <!-- build:css(.) styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" media='all'/>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/angular-bootstrap-nav-tree/dist/abn_tree.css" />
+        <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+        <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+        <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css" />
+        <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css" />
+        <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/font.css" type="text/css" />
+        <link rel="stylesheet" href="styles/app.css" type="text/css" />
+        <link rel="stylesheet" href="styles/material-design-icons.css" type="text/css" />
+        <!-- endbuild -->
+    </head>
+    <body ng-app="nxApp">
+        <div class="app" ui-view ng-controller="AppCtrl"></div>
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/angular-translate/angular-translate.js"></script>
+        <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+        <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+        <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular-bootstrap-nav-tree/dist/abn_tree_directive.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+        <script src="bower_components/angular-ui-select/dist/select.js"></script>
+        <script src="bower_components/ngstorage/ngStorage.js"></script>
+        <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+        <script src="bower_components/angular-base64/angular-base64.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="bower_components/material-design-lite/material.min.js"></script>
+        <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+        <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+        <script src="bower_components/nx-angular/dist/nx-angular.min.js"></script>
+        <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:js({.tmp,src}) scripts/scripts.js -->
+        <script src="app/app.js"></script>
+        <script src="config/config.js"></script>
+        <script src="config/config.lazyload.js"></script>
+        <script src="config/config.router.js"></script>
+        <script src="app/app.ctrl.js"></script>
+        <script src="dashboard/DashboardController.js"></script>
+        
+        <script src="auth/AuthConfig.js"></script>
+        <script src="auth/AuthInterceptor.js"></script>
+        <script src="auth/AuthRun.js"></script>
+        <script src="auth/AuthService.js"></script>
+        <script src="auth/AuthUtils.js"></script>
+        
+        <script src="login/LoginService.js"></script>
+        <script src="login/LoginController.js"></script>
+        
+        <script src="directives/menu.js"></script>
+        <script src="directives/menu-factory.js"></script>
+
+        <script src="directives/lazyload.js"></script>
+        <script src="directives/ui-nav.js"></script>
+        <script src="directives/ui-scroll.js"></script>
+        <script src="directives/ui-toggle.js"></script>
+        <script src="filters/fromnow.js"></script>
+        <script src="services/ngstore.js"></script>
+        <script src="services/ui-load.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>

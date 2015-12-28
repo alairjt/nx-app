@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Administração",
+        "name": "financial_platform",
+        "baseUrl": "/gestao-plataforma-financeira"
+    },
+    {
+        "title": "Arquivos",
+        "name": "files",
+        "baseUrl": "/gestao-arquivo"
+    },
+    {
+        "title": "Pagamento",
+        "name": "electronic_payment",
+        "baseUrl": "/gestao-pagamento-escritural"
+    },
+    {
+        "title": "Cartões",
+        "name": "recebimento_cartoes",
+        "baseUrl": "/gestao-recebimento-cartoes"
+    },
+    {
+        "title": "Implantação",
+        "name": "gestao_implantacao",
+        "baseUrl": "/gestao-implantacao"
+    }
+]

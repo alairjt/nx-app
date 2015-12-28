@@ -1,0 +1,34 @@
+<div id="nav">
+    <nav ui-nav>
+        <ul class="nav">
+            <li ui-sref-active="active">
+                <a md-ink-ripple ui-sref="home.dashboard">
+                    <i class="pull-right up"><b class="badge">2</b></i>
+                    <i class="icon mdi-action-settings-input-svideo i-20"></i>
+                    <span class="font-normal">Dashboard</span>
+                </a>
+            </li>
+            <li ui-nav ng-repeat="menu in menus">
+                <a md-ink-ripple id="menu-{{$index}}" name="menu-{{$index}}">
+                    <span class="pull-right text-muted">
+                        <i class="fa fa-caret-down"></i>
+                    </span>
+                    <i class="pull-right up"></i>
+                    <i class="icon mdi-navigation-apps i-20"></i>
+                    <span class="font-normal">{{menu.name}}</span>
+                </a>
+                <ul class="nav nav-sub">
+                    <li ng-repeat="page in menu.pages" ui-sref-active="active">
+                        <a md-ink-ripple id="page-{{$index}}" name="page-{{$index}}" ui-sref="{{page.state}}">{{page.name}}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="b-b b m-v-sm"></li>
+            <li>
+                <a md-ink-ripple ui-toggle-class="hide, show" target="#nav, #account">
+                    <span>Configurações</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

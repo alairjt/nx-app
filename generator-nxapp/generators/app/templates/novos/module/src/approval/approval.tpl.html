@@ -1,0 +1,47 @@
+<div>
+    <md-data-table-toolbar>
+        <h2 class="md-title">{{'Aprovação'| translate}}</h2>
+        <div flex></div>
+    </md-data-table-toolbar>
+    <div>
+        <md-data-table-toolbar>
+            <md-input-container class="md-icon-float md-block" flex>
+                <label>{{'Buscar'|translate}}</label>
+                <md-icon class="material-icons">search</md-icon>
+                <input name="searchFilter" id="searchFilter" type="text" ng-model="vm.searchFilter" ng-change="vm.filter(vm.searchFilter)"/>
+            </md-input-container>
+        </md-data-table-toolbar>
+        <md-data-table-container ng-show="vm.filtered.length > 0"> 
+            <table md-data-table class="md-primary" md-progress="vm.deferred">
+                <thead md-order="vm.config.query.order">
+                    <tr>
+                        <th order-by="nome_pagador" name="{{'Pagador'| translate}}"></th>
+                        <th order-by="identificacao_pagador" name="{{'Identificação pagador'| translate}}"></th>
+                        <th order-by="nome_beneficiario" name="{{'Credor'| translate}}"></th>
+                        <th order-by="identificacao_beneficiario" name="{{'Identificação credor'| translate}}"></th>
+                        <th order-by="data_transacao_financeira" name="{{'Data'| translate}}"></th>
+                        <th order-by="tipo_transacao" name="{{'Tipo'| translate}}"></th>
+                        <th order-by="valor_transacao" name="{{'Valor'| translate}}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr md-auto-select ng-repeat="approval in vm.filtered| orderBy: vm.config.query.order | limitTo: vm.config.query.limit: (vm.config.query.page - 1) * vm.config.query.limit">
+                        <td>{{approval.nome_pagador}}</td>
+                        <td>{{approval.identificacao_pagador}}</td>
+                        <td>{{approval.nome_beneficiario}}</td>
+                        <td>{{approval.identificacao_beneficiario}}</td>
+                        <td>{{approval.data_transacao_financeira}}</td>
+                        <td>{{approval.tipo_transacao}}</td>
+                        <td>{{approval.valor_transacao| currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+        <md-data-table-pagination md-label="vm.config.table.row_per_page" md-limit="vm.config.query.limit" md-page="vm.config.query.page" md-total="{{vm.filtered.length}}"></md-data-table-pagination>
+    </div>
+    <div ng-show="vm.filtered.length > 0">
+        <div>{{"Total busca"| translate}}: {{vm.filtered.length}}</div>
+        <div style="padding: 5px 0px" >Pagamentos: {{vm.getLabelTotalPagamentos(vm.filtered)}}</div>
+        <div>Recebimentos: {{vm.getLabelTotalRecebimentos(vm.filtered)}}</div>
+    </div>
+</div>

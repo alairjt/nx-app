@@ -1,0 +1,5 @@
+NPM=true
+BOWER=true
+GRUNT=true
+METRICS_TASK=""
+DIST_TASK="build"

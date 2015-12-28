@@ -1,0 +1,44 @@
+<div class="center-block w-xxl w-auto-xs p-v-md">
+    <div class="navbar">
+        <div class="navbar-brand m-t-lg text-center">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" style="
+                 width: 24px; height: 24px;">
+                <path d="M 50 0 L 100 14 L 92 80 Z" fill="rgba(139, 195, 74, 0.5)"></path>
+                <path d="M 92 80 L 50 0 L 50 100 Z" fill="rgba(139, 195, 74, 0.8)"></path>
+                <path d="M 8 80 L 50 0 L 50 100 Z" fill="#fff"></path>
+                <path d="M 50 0 L 8 80 L 0 14 Z" fill="rgba(255, 255, 255, 0.6)"></path>
+            </svg>
+            <span class="m-l inline">{{app.name}}</span>
+        </div>
+    </div>
+
+    <div class="p-lg panel md-whiteframe-z1 text-color m">
+        <form name="LoginForm">
+            <div flex-sm="100" flex-gt-sm="100" layout-sm="column">
+                <nx-display-validation input="LoginForm.username" label="Usuário">
+                    <input type="username" id="email" name="username" ng-model="vm.user.username" ng-required="true"/>
+                </nx-display-validation>
+            </div>
+
+            <div flex-sm="100" flex-gt-sm="100" layout-sm="column">
+                <nx-display-validation input="LoginForm.password" label="Senha">
+                    <input type="password" id="password" name="password" ng-model="vm.user.password" ng-required="true"/>
+                </nx-display-validation>
+            </div>
+
+            <md-button type="button" id="btnLogin" class="md-button btn-block md-primary md-raised md-hue-1" ng-click="vm.login(vm.user)"
+                       ng-disabled="LoginForm.$invalid">
+                <md-icon>save</md-icon>
+                <md-tooltip>
+                    {{'Entrar'| translate}}
+                </md-tooltip>
+                <span>{{'Entrar'| translate}}</span>
+            </md-button>
+        </form>
+    </div>
+
+    <div class="p-v-lg text-center">
+        <div class="m-b"><button ui-sref="access.forgot-password" class="md-btn">{{'Esqueceu sua senha?'| translate}}</button></div>
+        <div>{{'Não tem uma conta?'| translate}} <button ui-sref="access.signup" class="md-btn">{{'Criar uma conta'| translate}}</button></div>
+    </div>
+</div>

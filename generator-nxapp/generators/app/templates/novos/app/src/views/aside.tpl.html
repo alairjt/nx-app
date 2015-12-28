@@ -1,0 +1,127 @@
+<div class="box bg-dark">
+    <div class="navbar md-whiteframe-z1 no-radius" ng-class="$state.current.data.theme ? $state.current.data.theme.purple : app.setting.theme.purple">
+        <!-- brand -->
+        <a class="navbar-brand">
+            <img src="images/logo-sidebar.png" alt="logo" style="width: 248px; height: 59px;">
+            <!--<span class="hidden-folded m-l inline">{{app.name}}</span>--> 
+        </a>
+        <!-- / brand -->
+    </div>
+    <div class="box-row">
+        <div class="box-cell scrollable hover">
+            <div class="box-inner">
+                <div class="p hidden-folded" ng-class="$state.current.data.theme ? $state.current.data.theme.purple+'-50' : app.setting.theme.purple+'-50'" style="background-image:url(images/bg.png); background-size:cover">
+                    <div class="rounded w-64 bg-white inline pos-rlt">
+                        <img src="images/user.png" class="img-responsive rounded">
+                    </div>
+                    <a class="block m-t-sm" ui-toggle-class="hide, show" target="#nav, #account">
+                        <!--TODO: Nome do usuário logado-->
+                        <h4><span class="block">Usuário</span></h4>
+                        <span class="pull-right auto">
+                            <i class="fa inline fa-chevron-down"></i>
+                            <i class="fa none fa-chevron-up"></i>
+                        </span>
+                        <!--TODO: Email do usuário logado-->
+                        usuario@aenhive.com
+                    </a>
+                </div>
+                <!--<div id="nav" ng-include="'views/partials/aside.nav.menu.tpl.html'"></div>-->
+                <nx-menus></nx-menus>
+                <div id="account" class="hide m-v-xs">
+                    <nav>
+                        <ul class="nav">
+                            <li>
+                                <a md-ink-ripple ui-sref="page.profile">
+                                    <i class="icon mdi-action-perm-contact-cal i-20"></i>
+                                    <span>Perfil</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a md-ink-ripple ui-sref="page.settings">
+                                    <i class="icon mdi-action-settings i-20"></i>
+                                    <span>Configurações</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a md-ink-ripple ng-click='logout()'>
+                                    <i class="icon mdi-action-exit-to-app i-20"></i>
+                                    <span>Sair</span>
+                                </a>
+                            </li>
+                            <li class="m-v-sm b-b b"></li>
+<!--                            <li>
+                                <div class="nav-item">
+                                    <label class="md-check">
+                                        <input type="checkbox" ng-model="app.setting.asideFolded">
+                                        <i class="{{app.setting.theme.accent}} no-icon"></i>
+                                        <span class="hidden-folded">Travar menu</span>
+                                    </label>
+                                </div>
+                            </li>-->
+                            <li class="p p-v-sm hidden-folded">
+                                <div class="m-b-sm">Tema:</div>
+                                <div>
+                                    <div class="pointer box pull-left m-r-sm m-b-sm" style="width:32px;height:16px" ng-click="app.setting.theme = {primary: 'indigo', accent: 'green', warn: 'amber'}">
+                                        <span class="indigo col-xs-4 box-col"></span>
+                                        <span class="green col-xs-4 box-col"></span>
+                                        <span class="amber col-xs-4 box-col"></span>
+                                    </div>
+                                    <div class="pointer box pull-left m-r-sm m-b-sm" style="width:32px;height:16px" ng-click="app.setting.theme = {primary: 'green', accent: 'light-green', warn: 'lime'}">
+                                        <span class="green col-xs-4 box-col"></span>
+                                        <span class="light-green col-xs-4 box-col"></span>
+                                        <span class="lime col-xs-4 box-col"></span>
+                                    </div>
+                                    <div class="pointer box pull-left m-r-sm m-b-sm" style="width:32px;height:16px" ng-click="app.setting.theme = {primary: 'deep-purple', accent: 'blue', warn: 'light-blue'}">
+                                        <span class="deep-purple col-xs-4 box-col"></span>
+                                        <span class="blue col-xs-4 box-col"></span>
+                                        <span class="light-blue col-xs-4 box-col"></span>
+                                    </div>
+                                    <div class="pointer box pull-left m-r-sm m-b-sm" style="width:32px;height:16px" ng-click="app.setting.theme = {primary: 'blue', accent: 'indigo', warn: 'amber'}">
+                                        <span class="blue col-xs-4 box-col"></span>
+                                        <span class="indigo col-xs-4 box-col"></span>
+                                        <span class="amber col-xs-4 box-col"></span>
+                                    </div>
+                                    <div class="pointer box pull-left m-r-sm m-b-sm" style="width:32px;height:16px" ng-click="app.setting.theme = {primary: 'cyan', accent: 'teal', warn: 'green'}">
+                                        <span class="cyan col-xs-4 box-col"></span>
+                                        <span class="teal col-xs-4 box-col"></span>
+                                        <span class="green col-xs-4 box-col"></span>
+                                    </div>
+                                    <div class="pointer box pull-left m-r-sm m-b-sm" style="width:32px;height:16px" ng-click="app.setting.theme = {primary: 'pink', accent: 'deep-purple', warn: 'purple'}">
+                                        <span class="pink col-xs-4 box-col"></span>
+                                        <span class="deep-purple col-xs-4 box-col"></span>
+                                        <span class="purple col-xs-4 box-col"></span>
+                                    </div>
+                                    <div class="pointer box pull-left m-r-sm m-b-sm" style="width:32px;height:16px" ng-click="app.setting.theme = {primary: 'blue-grey', accent: 'teal-200', warn: 'lime'}">
+                                        <span class="blue-grey col-xs-4 box-col"></span>
+                                        <span class="teal-200 col-xs-4 box-col"></span>
+                                        <span class="lime col-xs-4 box-col"></span>
+                                    </div>
+                                    <div class="pointer box pull-left m-r-sm m-b-sm" style="width:32px;height:16px" ng-click="app.setting.theme = {primary: 'bg-dark', accent: 'green-300', warn: 'amber-300'}">
+                                        <span class="bg-dark col-xs-4 box-col"></span>
+                                        <span class="green-300 col-xs-4 box-col"></span>
+                                        <span class="amber-300 col-xs-4 box-col"></span>
+                                    </div>
+                                    <div class="pointer box pull-left m-r-sm m-b-sm" style="width:32px;height:16px" ng-click="app.setting.theme = {primary: 'bg-white', accent: 'green', warn: 'teal'}">
+                                        <span class="bg-white col-xs-4 box-col"></span>
+                                        <span class="green col-xs-4 box-col"></span>
+                                        <span class="teal col-xs-4 box-col"></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <ul class="nav b-t b">
+            <li>
+                <a href="http://themeforest.net/item/materil-responsive-admin-dashboard-template/11062969" target="_blank" md-ink-ripple>
+                    <i class="icon mdi-action-help i-20"></i>
+                    <span>Help &amp; Feedback</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

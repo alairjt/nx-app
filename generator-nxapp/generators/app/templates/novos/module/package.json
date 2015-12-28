@@ -1,0 +1,13 @@
+{
+  "name": "gestao-recebimento-cartoes",
+  "private": true,
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "stream-series": "^0.1.1",
+    "nx-gulp-module-builder" : "git+https://gitlab.nexxera.com/guilherme.damoreira/nx-gulp-module-builder.git"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
